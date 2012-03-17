@@ -2,4 +2,4 @@
 hanzi.start();
 hanzi.decompose('河');*/
 
-exports.hanzi = require("./hanzidecomposer.js");
+module.exports = require("./hanzidecomposer.js");
