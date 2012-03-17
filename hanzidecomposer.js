@@ -33,7 +33,7 @@ function start(){
 var decompose = function(character){
 	for(var i = 0; i<characters.length; i++){
 		if(characters[i][0] == character){
-			console.log(characters[i][2]);
+			return(characters[i][2]);
 		}
 	}
 };
