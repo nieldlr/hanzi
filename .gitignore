@@ -3,4 +3,3 @@ node_modules
 public_html
 Procfile
 server.js
-index.js
