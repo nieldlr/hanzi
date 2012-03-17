@@ -6,7 +6,7 @@ function start(){
 	var lines = new Array();
 	
 	console.log("Reading in File... Be patient. It may take a while");
-	var readFile = fs.readFileSync('./charData.txt', 'utf-8');
+	var readFile = fs.readFileSync(__dirname + '/charData.txt', 'utf-8');
 	lines = readFile.split(/\r?\n/);
 	//console.log(lines.length);
 		
