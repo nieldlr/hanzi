@@ -1,1 +1,1 @@
-module.exports = require("./hanzidecomposer.js");
+module.exports = require("./lib/module.js");
