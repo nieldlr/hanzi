@@ -1,8 +1,5 @@
 var hanzi = require('./lib/module.js');
 hanzi.start();
-var radicals = hanzi.decompose('微');
-console.log(radicals);
-var radicals2 = hanzi.decompose('水');
-console.log(radicals2);
-var definition = hanzi.definitionLookup('微', 's');
-console.log(definition);
+console.log(hanzi.decompose('微'));
+console.log(hanzi.decompose('水'));
+console.log(hanzi.definitionLookup('微', 's'));
