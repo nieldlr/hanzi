@@ -1,0 +1,2 @@
+v0.0.1 - First Version. Decomposes character into two components.
+v0.0.2 - Now checks if character is a radical first, if not, then decomposes it into two radicals.
