@@ -1,7 +1,7 @@
 {
   	"name": "hanzi",
 	"author": "Niel de la Rouviere",
-	"description": "A Node.js module that decomposes Hanzi into its radical components.",
+	"description": "Hanzi is a Chinese character dictionary lookup and radical decomposition module",
   	"version": "0.0.2",
 	"main": "index.js",
 	"repository" : {
