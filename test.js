@@ -1,5 +1,11 @@
 var hanzi = require('./lib/module.js');
 hanzi.start();
-console.log(hanzi.decompose('微'));
-console.log(hanzi.decompose('氵'));
+console.log("Test decomposition of simplifed character: " + hanzi.decompose('河'));
+console.log("Test decomposition of simplifed character: " + hanzi.decompose('登'));
+console.log("Test decomposition of simplifed character: " + hanzi.decompose('热'));
+console.log("---------");
+console.log("Test decomposition of complex traditional character: "+ hanzi.decompose('亂'));
+console.log("Test decomposition of complex traditional character: "+ hanzi.decompose('無'));
+console.log("Test decomposition of complex traditional character: "+ hanzi.decompose('雜'));
 console.log(hanzi.definitionLookup('微', 's'));
+console.log(hanzi.getPinyin('我', 's'));
