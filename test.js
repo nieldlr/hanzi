@@ -1,11 +1,23 @@
 var hanzi = require('./lib/module.js');
 hanzi.start();
-console.log("Test decomposition of simplifed character: " + hanzi.decompose('河'));
-console.log("Test decomposition of simplifed character: " + hanzi.decompose('登'));
-console.log("Test decomposition of simplifed character: " + hanzi.decompose('热'));
+var decomposition = hanzi.decompose('河', 1);
+console.log("Test radical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
+var decomposition = hanzi.decompose('和', 2);
+console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
+
+var decomposition = hanzi.decompose('登', 1);
+console.log("Test radical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
+var decomposition = hanzi.decompose('登', 2);
+console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
+/*var decomposition = hanzi.decompose('河', 1);
+console.log("Test decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
+var decomposition = hanzi.decompose('登', 1);
+console.log("Test decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);*/
 console.log("---------");
-console.log("Test decomposition of complex traditional character: "+ hanzi.decompose('亂'));
-console.log("Test decomposition of complex traditional character: "+ hanzi.decompose('無'));
-console.log("Test decomposition of complex traditional character: "+ hanzi.decompose('雜'));
-console.log(hanzi.definitionLookup('微', 's'));
-console.log(hanzi.getPinyin('我', 's'));
+/*var decomposition = hanzi.decompose('亂');
+console.log("Test decomposition of complex traditional character: " + decomposition.character + " => " + decomposition.components);
+//var decomposition = hanzi.decompose('雜');
+console.log("Test decomposition of complex traditional character: " + decomposition.character + " => " + decomposition.components);
+
+console.log(hanzi.definitionLookup('和', 's'));
+console.log(hanzi.getPinyin('我', 's'));*/
