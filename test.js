@@ -2,17 +2,13 @@ var hanzi = require('./lib/module.js');
 hanzi.start();
 var decomposition = hanzi.decompose('河', 1);
 console.log("Test radical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
-var decomposition = hanzi.decompose('和', 2);
+var decomposition = hanzi.decompose('河', 2);
 console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
 
 var decomposition = hanzi.decompose('登', 1);
 console.log("Test radical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
 var decomposition = hanzi.decompose('登', 2);
 console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
-/*var decomposition = hanzi.decompose('河', 1);
-console.log("Test decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
-var decomposition = hanzi.decompose('登', 1);
-console.log("Test decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);*/
 console.log("---------");
 /*var decomposition = hanzi.decompose('亂');
 console.log("Test decomposition of complex traditional character: " + decomposition.character + " => " + decomposition.components);
