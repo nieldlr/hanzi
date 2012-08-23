@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/nieldlr/Hanzi.png)](http://travis-ci.org/nieldlr/Hanzi)
 # Hanzi
 
 Hanzi is a Chinese character dictionary lookup and radical decomposition module for Node.js. 
