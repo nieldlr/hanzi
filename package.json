@@ -1,8 +1,8 @@
 {
   	"name": "hanzi",
 	"author": "Niel de la Rouviere",
-	"description": "Hanzi is a Chinese character dictionary lookup and radical decomposition module",
-  	"version": "0.0.3",
+	"description": "HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js",
+  	"version": "0.0.4",
 	"main": "index.js",
 	"repository" : {
 	        "type": "git",
