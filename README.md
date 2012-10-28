@@ -16,31 +16,31 @@ http://groovy.codeplex.com/wikipage?title=cjk-decomp
 Install
 ========================
 ```javascript
-	npm install hanzi
+npm install hanzi
 ```
 
 How to use
 ========================
 
 ```javascript
-	//Require
-	var hanzi = require("hanzi");
-	//Initiate
-	hanzi.start();
-	//Decompose Characters - Returns a parsed JSON object with the fields: 
-	//"character" (String), "components1", "components2" & "components3" (Array).
-	//Type of Decomposition: 1 = Once (returns only two components), 2 = Radical. 3 = Graphical. 
-	//If no parameter is given it returns all possible decompositions. This is used by default.
-	var decomposition = hanzi.decompose('搬');
-	console.log(decomposition.character); 
-	搬
-	console.log(decomposition.components1);
-	[扌,般]
-	console.log(decomposition.components2);
-	[㇚,二,舟,殳]
-	console.log(decomposition.components3);
-	[㇚,二,㇑,㇆,㇔,⺀,㇐,㇓,㇠,㇇,㇏]
+//Require
+var hanzi = require("hanzi");
+//Initiate
+hanzi.start();
+//Decompose Characters - Returns a parsed JSON object with the fields: 
+//"character" (String), "components1", "components2" & "components3" (Array).
+//Type of Decomposition: 1 = Once (returns only two components), 2 = Radical. 3 = Graphical. 
+//If no parameter is given it returns all possible decompositions. This is used by default.
+var decomposition = hanzi.decompose('搬');
+console.log(decomposition.character); 
+搬
+console.log(decomposition.components1);
+[扌,般]
+console.log(decomposition.components2);
+[㇚,二,舟,殳]
+console.log(decomposition.components3);
+[㇚,二,㇑,㇆,㇔,⺀,㇐,㇓,㇠,㇇,㇏]
 
-	//If a type of decomposition is forced (eg. hanzi.decompose('搬', 1);) then it returns only two fields: 
-	//"character" & "components"
+//If a type of decomposition is forced (eg. hanzi.decompose('搬', 1);) then it returns only two fields: 
+//"character" & "components"
 ```
