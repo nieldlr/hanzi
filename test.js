@@ -7,13 +7,14 @@ console.log("Test radical decomposition of simplifed character: " + decompositio
 //var decomposition = hanzi.decompose('搬', 3);
 console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components3);
 
-var decomposition = hanzi.decompose('登', 1);
-console.log("Test radical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
-var decomposition = hanzi.decompose('雜', 1);
-console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components);
 console.log("---------");
+console.log(hanzi.comparePhoneticRadical('搬', decomposition.components1[1]));
+var decompositionmany = hanzi.decomposeMany("和挂搬");
+console.log(decompositionmany);
 
-console.log(hanzi.definitionLookup('和'));
-console.log(hanzi.definitionLookup('和乐'));
+var search = hanzi.dictionarySearch('光');
+console.log(search);
+//console.log(hanzi.definitionLookup('和'));
+//console.log(hanzi.definitionLookup('和乐'));
 //console.log(hanzi.getPinyin('我', 's'));
 //console.log(hanzi.comparePhoneticRadical('挂', '圭'));
