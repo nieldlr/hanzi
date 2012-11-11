@@ -1,3 +1,5 @@
 v0.0.1 - First Version. Decomposes character into two components.
 v0.0.2 - Now checks if character is a radical first, if not, then decomposes it into two radicals.
 v0.0.3 - If it detects a number it now recursively decomposes until no number is reached. Experimental at this stage.
+v0.0.4/v0.1.0 - Changed the versioning to allow for hotfixes. Added a lot new functions, including better decomposition system allowing three levels deep decomposition.
+v0.2.0 - Added dictionarySearch, decomposeMany and getExampleWords functions. Most of the code was also refactored by djuretic. Thanks!
