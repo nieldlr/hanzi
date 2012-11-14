@@ -12,12 +12,12 @@ console.log(hanzi.comparePhoneticRadical('搬', decomposition.components1[1]));
 var decompositionmany = hanzi.decomposeMany("和挂搬");
 console.log(decompositionmany);
 
-var search = hanzi.dictionarySearch('我是见很吗不好谢在你谁什她么的也这他那们对去家怎做起哪想里在先太姐请名问生小叫字', 'only');
-console.log(search);
-console.log(search.length);
+//var search = hanzi.dictionarySearch('我是见很吗不好谢在你谁什她么的也这他那们对去家怎做起哪想里在先太姐请名问生小叫字', 'only');
+//console.log(search);
+//console.log(search.length);
 
-//var examples = hanzi.getExamples("挂");
-//console.log(examples);
+var examples = hanzi.getExamples("挂");
+console.log(examples);
 
 //console.log(hanzi.definitionLookup('和'));
 //console.log(hanzi.definitionLookup('和乐'));
