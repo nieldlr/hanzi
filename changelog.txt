@@ -4,3 +4,4 @@ v0.0.3 - If it detects a number it now recursively decomposes until no number is
 v0.0.4/v0.1.0 - Changed the versioning to allow for hotfixes. Added a lot new functions, including better decomposition system allowing three levels deep decomposition.
 v0.2.0 - Added dictionarySearch, decomposeMany and getExampleWords functions. Most of the code was also refactored by djuretic. Thanks!
 v0.2.1 - Changed Leiden University's Sina Weibo Word Frequency corpus data to be a lot simpler and less bulky. Saves a lot more on data transfer. File now a lot smaller.
+v0.2.2 - Updated dictionary to return an object rather than an array (djuretic). Also updated getExamples function to return objects to display both traditional and simplified characters. Also a determineIfSimplified function.

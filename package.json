@@ -2,7 +2,7 @@
   	"name": "hanzi",
 	"author": "Niel de la Rouviere",
 	"description": "HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js",
-  	"version": "0.2.1",
+  	"version": "0.2.2",
 	"main": "index.js",
 	"repository" : {
 	        "type": "git",
