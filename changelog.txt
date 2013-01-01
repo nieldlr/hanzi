@@ -7,3 +7,4 @@ v0.2.1 - Changed Leiden University's Sina Weibo Word Frequency corpus data to be
 v0.2.2 - Updated dictionary to return an object rather than an array (djuretic). Also updated getExamples function to return objects to display both traditional and simplified characters. Also a determineIfSimplified function.
 v0.2.3 - Changed the radical list into a js array. Also added messy input handling for decomposition.
 v0.2.4 - Decompositions are now in a flat array and not embedded. Furthermore, character decomposition is now read as an object. Also fixed some characters with data.
+v0.2.5 - Added a function to check if component exists.
