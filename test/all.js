@@ -3,6 +3,14 @@ var hanzi = require("../index.js");
 hanzi.start();
 
 describe('hanzidecomposer', function(){
+	it('checks if component exists', function() {
+		assert(hanzi.ifComponentExists('爱'));
+	});
+
+	it('detects invalid input', function() {
+		assert.equal(hanzi.decompose('a'), 'Invalid Input');
+	});
+
 	it('should once decompose simplified character', function(){
 		assert.deepEqual(hanzi.decompose('爱').components1, ['37333', '友']);
 	});
