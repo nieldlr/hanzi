@@ -12,6 +12,12 @@ console.log("Test graphical decomposition of simplifed character: " + decomposit
 
 console.log("---------");
 
+console.log("Test radical lookups");
+for(var i=0; i<decomposition.components2.length; i++){
+	var radicallookup = hanzi.getRadicalMeaning(decomposition.components2[i]);
+	console.log(decomposition.components2[i] +": " +radicallookup);
+}
+
 var decompositionmany = hanzi.decomposeMany("和挂爱");
 console.log("Test many decomposition: ");
 console.log(decompositionmany);
@@ -35,6 +41,12 @@ console.log("Test radical decomposition of simplifed character: " + decompositio
 console.log("Test graphical decomposition of simplifed character: " + decomposition.character + " => " + decomposition.components3);
 
 console.log("---------");
+
+console.log("Test radical lookups");
+for(var i=0; i<decomposition.components2.length; i++){
+	var radicallookup = hanzi.getRadicalMeaning(decomposition.components2[i]);
+	console.log(decomposition.components2[i] +": " +radicallookup);
+}
 
 var singlelookup = hanzi.definitionLookup('愛');
 console.log("Test single lookup of dictionary entry: ");
