@@ -8,3 +8,4 @@ v0.2.2 - Updated dictionary to return an object rather than an array (djuretic).
 v0.2.3 - Changed the radical list into a js array. Also added messy input handling for decomposition.
 v0.2.4 - Decompositions are now in a flat array and not embedded. Furthermore, character decomposition is now read as an object. Also fixed some characters with data.
 v0.2.5 - Added a function to check if component exists.
+v0.2.6 - Added a getRadicalMeaning function and adapted the radicalList file to an object to add the extra info.
