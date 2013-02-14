@@ -128,7 +128,6 @@
 貍:fill
 僕:fill
 匛:fill
-壯:fill
 倉:fill
 敄:fill
 㞢:fill
