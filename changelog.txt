@@ -10,3 +10,6 @@ v0.2.4 - Decompositions are now in a flat array and not embedded. Furthermore, c
 v0.2.5 - Added a function to check if component exists.
 v0.2.6 - Added a getRadicalMeaning function and adapted the radicalList file to an object to add the extra info.
 v0.2.7 - Added better handling of numbers in the data. Level 1 & 2 replaces the numbers with a string and in level 3 it resolves all numbers.
+v0.3.0 - Added determinePhoneticRegularity function
+v0.3.1 - Bug fix to determinePhoneticRegularity function
+v0.3.2 - Added phonetic set data generated from using the determinePhoneticRegularity function. Also added getPhoneticSet function.
