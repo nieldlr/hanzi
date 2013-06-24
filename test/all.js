@@ -22,6 +22,10 @@ describe('hanzidecomposer', function(){
 		assert(hanzi.getRadicalMeaning('氵'), "water");
 	});
 
+	it("gets character frequency data", function() {
+		assert(hanzi.getCharacterFrequency('热'), { number: '530', character: '热', count: '31190', percentage: '76.4970999352', pinyin: 're4', meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
+	});
+
 	it('should once decompose simplified character', function(){
 		assert.deepEqual(hanzi.decompose('爱').components1, ['No glyph available', '友']);
 	});

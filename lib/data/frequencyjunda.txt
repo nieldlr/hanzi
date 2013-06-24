@@ -1,6 +1,6 @@
 1	的	3244537	3.71868396926 de/di2/di4	(possessive particle)/of, really and truly, aim/clear
 2	一	1646186	5.60543868606	yi1	one/1/single/a(n)
-3	了	1380375	7.18753757539	le/liao3/liao4	(modal particle intensifying preceding clause)/(completed action marker), to know/to understand/to know, clear, look afar from a high place
+3	了	1380375	7.18753757539 le/liao3/liao4	(modal particle intensifying preceding clause)/(completed action marker), to know/to understand/to know, clear, look afar from a high place
 4	是	1327443	8.70896913995	shi4	is/are/am/yes/to be
 5	不	1285160	10.1819385929	bu4/bu2	(negative prefix)/not/no
 6	我	1087588	11.4284634625	wo3	I/me/myself
