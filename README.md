@@ -280,6 +280,21 @@ console.log(hanzi.getPinyin('的'));
 [ 'de5', 'di2', 'di4' ]
 ```
 
+### hanzi.getCharacterFrequency(character);
+
+Returns frequency data for a character based on the Junda corpus. The data is in simplified characters, but I made the function script agnostic. So both traditional and simplified will return the same data.
+
+```javascript
+console.log(hanzi.getCharacterFrequency('热'));
+
+{ number: '530',
+  character: '热',
+  count: '31190',
+  percentage: '76.4970999352',
+  pinyin: 're4',
+  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' }
+```
+
 #### hanzi.determinePhoneticRegularity(decomposition_object/character);
 
 This function takes a decomposition object created by hanzi.decompose() or a character, then returns an object that displays all possible combinations of phonetic regularity relationship of the character to all its components.
