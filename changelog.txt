@@ -14,3 +14,4 @@ v0.3.0 - Added determinePhoneticRegularity function
 v0.3.1 - Bug fix to determinePhoneticRegularity function
 v0.3.2 - Added phonetic set data generated from using the determinePhoneticRegularity function. Also added getPhoneticSet function.
 v0.3.3 - Added a function to retrieve character frequency data from Junda corpus.
+v0.3.4 - Update Junda Corpus Data
