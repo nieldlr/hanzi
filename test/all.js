@@ -23,7 +23,12 @@ describe('hanzidecomposer', function(){
 	});
 
 	it("gets character frequency data", function() {
-		assert.deepEqual(hanzi.getCharacterFrequency('热'), { number: '530', character: '热', count: '31190', percentage: '76.4970999352', pinyin: 're4', meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
+		assert.deepEqual(hanzi.getCharacterFrequency('热'), { number: '606',
+		  character: '热',
+		  count: '67051',
+		  percentage: '79.8453694124',
+		  pinyin: 're4',
+		  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
 	});
 
 	it("determines phonetic regularity", function(){
