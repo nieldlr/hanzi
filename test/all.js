@@ -31,6 +31,10 @@ describe('hanzidecomposer', function(){
 		  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
 	});
 
+	it("gets all characters with a given component", function(){
+		assert.deepEqual(hanzi.getCharactersWithComponent('囗'), [ '国','因','西','回','口','四','团','图','围','困','固','园','圆','圈','囚','圃','囤','囿','囡','囫','圜','囵','囹','圄','囝','圉','圊','釦'])
+	});
+
 	it("determines phonetic regularity", function(){
 		var expected = {
 			di1: {
