@@ -56,3 +56,7 @@ var examples = hanzi.getExamples("愛");
 console.log("Test examples words from character: ");
 console.log(examples);
 console.log(examples[0]);
+var frequency = hanzi.getCharacterFrequency('⺙');
+console.log('⺙ frequency: %s',JSON.stringify(frequency));
+var frequency = hanzi.getCharacterFrequency('好');
+console.log('好 frequency: %s',JSON.stringify(frequency));
