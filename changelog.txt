@@ -17,3 +17,4 @@ v0.3.3 - Added a function to retrieve character frequency data from Junda corpus
 v0.3.4 - Update Junda Corpus Data
 v0.4.0 - Added new function: getCharactersWithComponent
 v0.4.1 - Bug fix to way the characterswithcomponent object was compiled.
+v0.4.2 - Fix 耂 encoding error
