@@ -4,6 +4,7 @@
   "description": "HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js",
   "version": "0.4.2",
   "main": "index.js",
+  "browserify": { "transform": [ "brfs" ] },
   "repository": {
     "type": "git",
     "url": "git@github.com:nieldlr/Hanzi.git"
