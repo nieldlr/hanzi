@@ -67,3 +67,77 @@ describe('hanzidecomposer', function(){
 		assert.deepEqual(hanzi.decompose('愛').components3, ['爫','冖','𠁼','㇃','㇇','㇏','㇒']);
 	});
 });
+
+describe('hanzidictionary', function(){
+	it('should look up a definition', function(){
+		var expected = [ { traditional: '愛',
+			simplified: '爱',
+			pinyin: 'ai4',
+			definition: 'to love/affection/to be fond of/to like' 
+		}];
+		assert.deepEqual(hanzi.definitionLookup('爱'), expected);
+	});
+	it('should look up a simplified definition with simplified character', function(){
+		var expected = [ { traditional: '愛',
+			simplified: '爱',
+			pinyin: 'ai4',
+			definition: 'to love/affection/to be fond of/to like' 
+		}];
+		assert.deepEqual(hanzi.definitionLookup('爱', 's'), expected);
+	});
+	it('should look up a traditional definition with traditional character', function(){
+		var expected = [ { traditional: '愛',
+			simplified: '爱',
+			pinyin: 'ai4',
+			definition: 'to love/affection/to be fond of/to like' 
+		}];
+		assert.deepEqual(hanzi.definitionLookup('愛', 't'), expected);
+	});
+	it('should fail looking up a simplified definition with a traditional character', function(){
+		assert.deepEqual(hanzi.definitionLookup('愛', 's'), undefined);
+	});
+	it('should fail looking up a traditional definition with a simplified character', function(){
+		assert.deepEqual(hanzi.definitionLookup('爱', 't'), undefined);
+	});
+	it('should look up a definition with multiple characters', function(){
+		var expected = [ { traditional: '最後',
+		    simplified: '最后',
+		    pinyin: 'zui4 hou4',
+		    definition: 'final/last/finally/ultimate' 
+		}];
+		assert.deepEqual(hanzi.definitionLookup('最后'), expected);
+	});
+
+	it('should look up a definition with multiple meanings', function(){
+		var expected = [ { traditional: '和',
+		    simplified: '和',
+		    pinyin: 'He2',
+		    definition: 'surname He/Japanese (food, clothes etc)' },
+		  { traditional: '和',
+		    simplified: '和',
+		    pinyin: 'he2',
+		    definition: 'and/together with/with/sum/union/peace/harmony/Taiwan pr. [han4] when it means "and"' },
+		  { traditional: '和',
+		    simplified: '和',
+		    pinyin: 'he4',
+		    definition: 'cap (a poem)/to respond in singing' },
+		  { traditional: '和',
+		    simplified: '和',
+		    pinyin: 'hu2',
+		    definition: 'to complete a set in mahjong or playing cards' },
+		  { traditional: '和',
+		    simplified: '和',
+		    pinyin: 'huo2',
+		    definition: 'soft/warm' },
+		  { traditional: '和',
+		    simplified: '和',
+		    pinyin: 'huo4',
+		    definition: 'to mix together/to blend' 
+		}];
+		assert.deepEqual(hanzi.definitionLookup('和'), expected);
+	});
+
+	it('should fail looking up a definition with dirty input', function(){
+		assert.deepEqual(hanzi.definitionLookup('%'), undefined);
+	});
+});
