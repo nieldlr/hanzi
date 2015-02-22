@@ -108,7 +108,7 @@ describe('hanzidictionary', function(){
 		assert.deepEqual(hanzi.definitionLookup('最后'), expected);
 	});
 
-	it('should look up a definition with multiple meanings', function(){
+	it('should look up a definition with multiple meanings with a common character', function(){
 		var expected = [ { traditional: '和',
 		    simplified: '和',
 		    pinyin: 'He2',
@@ -135,6 +135,19 @@ describe('hanzidictionary', function(){
 		    definition: 'to mix together/to blend' 
 		}];
 		assert.deepEqual(hanzi.definitionLookup('和'), expected);
+	});
+
+	it('should look up a definition with multiple meanings with a more obscure character', function(){
+		var expected = [ { traditional: '糺',
+		    simplified: '糺',
+		    pinyin: 'jiu1',
+		    definition: 'archaic variant of 糾|纠[jiu1]' },
+		  { traditional: '糺',
+		    simplified: '糺',
+		    pinyin: 'jiu3',
+		    definition: 'army (used during the Liao, Jin and Yuan dynasties)' 
+		}];
+		assert.deepEqual(hanzi.definitionLookup('糺'), expected);
 	});
 
 	it('should fail looking up a definition with dirty input', function(){
