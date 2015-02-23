@@ -4,7 +4,7 @@
     "description": "HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js",
     "version": "0.4.2",
     "main": "index.js",
-    "browserify": { "transform": [ "coffeeify", "brfs" ] },
+    "browserify": { "transform": [ "brfs" ] },
     "browser": {
         "coffee-script": false
     },
@@ -17,10 +17,8 @@
     },
     "devDependencies": {
         "mocha": "1.12.x",
-        "coffeeify": "~0.7.0",
         "brfs": "~1.2.0"
     },
     "dependencies": {
-        "coffee-script": "~1.7.1"
     }
 }
