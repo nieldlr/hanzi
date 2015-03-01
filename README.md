@@ -270,6 +270,16 @@ console.log(hanzi.getExamples('橄'));
       definition: 'olivine (rock-forming mineral magnesium-iron silicate (Mg,Fe)2SiO4)/peridot' } ] ]
 ```
 
+#### hanzi.segment(phrase); - NEW in v0.5.0
+
+Returns an array of characters that are segmented based on a longest match lookup.
+
+````javascript
+console.log(hanzi.segment("我們都是陌生人。"));
+
+[ '我們', '都', '是', '陌生人', '。' ]
+````
+
 #### hanzi.getPinyin(character);
 
 Returns all possible pinyin data for a character. 
@@ -349,7 +359,9 @@ HanziJS is used in the following projects:
 
 ## Contributors
 
+* [nieldlr (Author)](http://github.com/nieldlr) 
 * [djuretic](http://github.com/djuretic)
+* [nikdvp](http://github.com/nikvdp)
 
 ## License
 
