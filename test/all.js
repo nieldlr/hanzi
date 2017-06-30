@@ -22,13 +22,40 @@ describe('hanzidecomposer', function(){
 		assert(hanzi.getRadicalMeaning('氵'), "water");
 	});
 
-	it("gets character frequency data", function() {
+	it("gets character frequency data for simplified character", function() {
 		assert.deepEqual(hanzi.getCharacterFrequency('热'), { number: '606',
 		  character: '热',
 		  count: '67051',
 		  percentage: '79.8453694124',
 		  pinyin: 're4',
 		  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
+	});
+
+	it("gets character frequency data for traditional character", function() {
+		assert.deepEqual(hanzi.getCharacterFrequency('熱'), { number: '606',
+		  character: '热',
+		  count: '67051',
+		  percentage: '79.8453694124',
+		  pinyin: 're4',
+		  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
+	});
+
+	it("gets character frequency data for simplified character with a previously different traditional frequency count", function() {
+		assert.deepEqual(hanzi.getCharacterFrequency('认'), { number: '213',
+		  character: '认',
+		  count: '191866',
+		  percentage: '57.0890429779',
+		  pinyin: 'ren4',
+		  meaning: 'to recognize/to know/to admit' });
+	});
+
+	it("gets character frequency data for traditional character with a previously different traditional frequency count", function() {
+		assert.deepEqual(hanzi.getCharacterFrequency('認'), { number: '213',
+		  character: '认',
+		  count: '191866',
+		  percentage: '57.0890429779',
+		  pinyin: 'ren4',
+		  meaning: 'to recognize/to know/to admit' });
 	});
 
 	it("gets all characters with a given component", function(){
