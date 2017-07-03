@@ -21,3 +21,4 @@ v0.4.2 - Fix 耂 encoding error
 v0.5.0 - Add Longest Match segment function thanks to nikdvp! Browserify builds now also function properly using brfs.
 v0.5.1 - Add licence information to package.json. Thanks zurawiki!
 v0.6.0 - Fix frequency info for some traditional characters. Traditional characters now default to using the simplified list. Thanks raylillywhite!
+v0.7.0 - Add a new function getCharacterInFrequencyListByPosition which grabs a character in the frequency list.
