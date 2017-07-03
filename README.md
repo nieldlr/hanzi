@@ -305,7 +305,7 @@ console.log(hanzi.getCharacterFrequency('热'));
   meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' }
 ```
 
-#### hanzi.getCharacterInFrequencyListByPosition(character); - NEW in v0.7.0
+#### hanzi.getCharacterInFrequencyListByPosition(position); - NEW in v0.7.0
 
 Gets a character based on its position the frequency list. This only goes up to 9933 based on the Junda Frequency list.
 
