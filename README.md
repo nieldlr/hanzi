@@ -305,6 +305,21 @@ console.log(hanzi.getCharacterFrequency('热'));
   meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' }
 ```
 
+#### hanzi.getCharacterInFrequencyListByPosition(character); - NEW in v0.7.0
+
+Gets a character based on its position the frequency list. This only goes up to 9933 based on the Junda Frequency list.
+
+```javascript
+console.log(hanzi.getCharacterInFrequencyListByPosition(111));
+
+{ number: '111',
+  character: '机',
+  count: '339823',
+  percentage: '43.7756134862',
+  pinyin: 'ji1',
+  meaning: 'machine/opportunity/secret' }
+```
+
 #### hanzi.getCharactersWithComponent(component);
 
 Returns an array of characters with the given component. If a component has bound forms, such as 手 and 扌, they're considered the same and returns all the characters with the component.
@@ -362,6 +377,10 @@ HanziJS is used in the following projects:
 * [nieldlr (Author)](http://github.com/nieldlr) 
 * [djuretic](http://github.com/djuretic)
 * [nikdvp](http://github.com/nikvdp)
+* [hermanschaaf](http://github.com/hermanschaaf)
+* [raylillywhite](http://github.com/raylillywhite)
+* [zurawiki](http://github.com/zurawiki)
+* [zedwill](http://github.com/zedwill)
 
 ## License
 
