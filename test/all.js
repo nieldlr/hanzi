@@ -67,6 +67,15 @@ describe('hanzidecomposer', function(){
 		  meaning: 'machine/opportunity/secret' });
 	});
 
+	it("gets a traditional character by position in frequency list that doesn't have a simplified variant", function() {
+		assert.deepEqual(hanzi.getCharacterInFrequencyListByPosition(6649), { number: '6649',
+		  character: '貙',
+		  count: '13',
+		  percentage: '99.9947045027',
+		  pinyin: 'chu1',
+		  meaning: '' });
+	});
+
 	it("gets all characters with a given component", function(){
 		assert.deepEqual(hanzi.getCharactersWithComponent('囗'), [ '国','因','西','回','口','四','团','图','围','困','恩','固','烟','园','窗','圆','惯','圈','贯','衰','菌','傻','姻','咽','嗯','囚','捆','茵','粤','瑙','圃','囱','涸','媲','锢','胭','泗','蓑','囤','囿','泅','摁','囡','帼','氤','蝈','邋','蓖','崮','囫','囟','掼','圜','囵','驷','阃','鬣','囹','痼','圄','卣','掴','腦','榱','篦','硇','涠','洇','總','鱲','囝','貔','圉','溷','缞','鲴','悃','铟','腘','骢','躐','謴','璁','蒽','骃','鯝','镴','硱','鬛','逌','睏','秵','絪','駰','麕','螕','裀','稛','縕','糰','箇','膕','綑','臘','箘','聰','蔥','驄','薀','祻','繌','圊','罆','謥','貫','鏆','銦','蒕','簑','碅','薗','釦','稇','蜠','蠟','醞' ])
 	});
