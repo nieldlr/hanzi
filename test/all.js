@@ -18,9 +18,14 @@ describe('hanzidecomposer', function(){
 		assert.deepEqual(hanzi.getPinyin('的'), ['de5', 'di2', 'di4']);
 	});
 
-	it("gets a radical's meaning", function() {
-		assert(hanzi.getRadicalMeaning('氵'), "water");
-	});
+  it("gets a radical's meaning", function()  {
+    assert(hanzi.getRadicalMeaning('氵'), "water");
+  assert(hanzi.getRadicalMeaning('爫'), 'claw/talon');
+    assert(hanzi.getRadicalMeaning('冖'), 'cover');
+    assert(hanzi.getRadicalMeaning('𠂇'), 'left hand');
+    assert(hanzi.getRadicalMeaning('又'), 'right hand');
+    assert(hanzi.getRadicalMeaning('心'), 'heart');
+    assert(hanzi.getRadicalMeaning('夂'), 'go');});
 
 	it("gets character frequency data for simplified character", function() {
 		assert.deepEqual(hanzi.getCharacterFrequency('热'), { number: '606',
@@ -28,7 +33,17 @@ describe('hanzidecomposer', function(){
 		  count: '67051',
 		  percentage: '79.8453694124',
 		  pinyin: 're4',
-		  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up' });
+		  meaning: 'heat/to heat up/fervent/hot (of weather)/warm up'
+		});
+    assert.deepEqual(hanzi.getCharacterFrequency('⺙'), 'Character not found');
+    assert.deepEqual(hanzi.getCharacterFrequency('好'), {
+      number: '82',
+      character: '好',
+      count: '411866',
+      percentage: '38.1712637099',
+      pinyin: 'hao3/hao4',
+      meaning: 'good/well, be fond of',
+    });
 	});
 
 	it("gets character frequency data for traditional character", function() {
@@ -91,7 +106,7 @@ describe('hanzidecomposer', function(){
 		};
 		assert.deepEqual(hanzi.determinePhoneticRegularity('低'), expected);
 	});
-	
+
 	it('should once decompose simplified character', function(){
 		assert.deepEqual(hanzi.decompose('爱').components1, ['No glyph available', '友']);
 	});
@@ -113,45 +128,49 @@ describe('hanzidecomposer', function(){
 	});
 });
 
-describe('hanzidictionary', function(){
-	it('should look up a definition', function(){
-		var expected = [ { traditional: '愛',
-			simplified: '爱',
-			pinyin: 'ai4',
-			definition: 'to love/affection/to be fond of/to like' 
-		}];
-		assert.deepEqual(hanzi.definitionLookup('爱'), expected);
-	});
-	it('should look up a simplified definition with simplified character', function(){
-		var expected = [ { traditional: '愛',
-			simplified: '爱',
-			pinyin: 'ai4',
-			definition: 'to love/affection/to be fond of/to like' 
-		}];
-		assert.deepEqual(hanzi.definitionLookup('爱', 's'), expected);
-	});
-	it('should look up a traditional definition with traditional character', function(){
-		var expected = [ { traditional: '愛',
-			simplified: '爱',
-			pinyin: 'ai4',
-			definition: 'to love/affection/to be fond of/to like' 
-		}];
-		assert.deepEqual(hanzi.definitionLookup('愛', 't'), expected);
-	});
-	it('should fail looking up a simplified definition with a traditional character', function(){
-		assert.deepEqual(hanzi.definitionLookup('愛', 's'), undefined);
-	});
-	it('should fail looking up a traditional definition with a simplified character', function(){
-		assert.deepEqual(hanzi.definitionLookup('爱', 't'), undefined);
-	});
-	it('should look up a definition with multiple characters', function(){
-		var expected = [ { traditional: '最後',
-		    simplified: '最后',
-		    pinyin: 'zui4 hou4',
-		    definition: 'final/last/finally/ultimate' 
-		}];
-		assert.deepEqual(hanzi.definitionLookup('最后'), expected);
-	});
+describe('hanzidictionary', function()  {
+  it('should look up a definition', function()  {
+    var expected = [{
+      traditional: '愛',
+      simplified: '爱',
+      pinyin: 'ai4',
+      definition: 'to love/affection/to be fond of/to like'
+    }];
+    assert.deepEqual(hanzi.definitionLookup('爱'), expected);
+  assert.deepEqual(hanzi.definitionLookup('愛'), expected);});
+  it('should look up a simplified definition with simplified character', function()  {
+    var expected = [{
+      traditional: '愛',
+      simplified: '爱',
+      pinyin: 'ai4',
+      definition: 'to love/affection/to be fond of/to like'
+    }];
+    assert.deepEqual(hanzi.definitionLookup('爱', 's'), expected);
+  });
+  it('should look up a traditional definition with traditional character', function()  {
+    var expected = [{
+      traditional: '愛',
+      simplified: '爱',
+      pinyin: 'ai4',
+      definition: 'to love/affection/to be fond of/to like'
+    }];
+    assert.deepEqual(hanzi.definitionLookup('愛', 't'), expected);
+  });
+  it('should fail looking up a simplified definition with a traditional character', function()  {
+    assert.deepEqual(hanzi.definitionLookup('愛', 's'), undefined);
+  });
+  it('should fail looking up a traditional definition with a simplified character', function()  {
+    assert.deepEqual(hanzi.definitionLookup('爱', 't'), undefined);
+  });
+  it('should look up a definition with multiple characters', function()  {
+    var expected = [{
+      traditional: '最後',
+      simplified: '最后',
+      pinyin: 'zui4 hou4',
+      definition: 'final/last/finally/ultimate'
+    }];
+    assert.deepEqual(hanzi.definitionLookup('最后'), expected);
+  });
 
 	it('should look up a definition with multiple meanings with a common character', function(){
 		var expected = [ { traditional: '和',
@@ -177,7 +196,7 @@ describe('hanzidictionary', function(){
 		  { traditional: '和',
 		    simplified: '和',
 		    pinyin: 'huo4',
-		    definition: 'to mix together/to blend' 
+		    definition: 'to mix together/to blend'
 		}];
 		assert.deepEqual(hanzi.definitionLookup('和'), expected);
 	});
@@ -190,7 +209,7 @@ describe('hanzidictionary', function(){
 		  { traditional: '糺',
 		    simplified: '糺',
 		    pinyin: 'jiu3',
-		    definition: 'army (used during the Liao, Jin and Yuan dynasties)' 
+		    definition: 'army (used during the Liao, Jin and Yuan dynasties)'
 		}];
 		assert.deepEqual(hanzi.definitionLookup('糺'), expected);
 	});
@@ -200,7 +219,7 @@ describe('hanzidictionary', function(){
 	});
 
 	it('should do a dictionary search with a common character', function(){
-		var expected = [ 
+		var expected = [
 		  [ { traditional: '六方最密堆積',
 		      simplified: '六方最密堆积',
 		      pinyin: 'liu4 fang1 zui4 mi4 dui1 ji1',
@@ -457,7 +476,7 @@ describe('hanzidictionary', function(){
 	});
 
 	it('should do a dictionary search and return words with only that entry', function(){
-		var expected = [ 
+		var expected = [
 			[ { traditional: '爸',
 				simplified: '爸',
 			    pinyin: 'ba4',
@@ -465,7 +484,7 @@ describe('hanzidictionary', function(){
 		  	[ { traditional: '爸爸',
 			    simplified: '爸爸',
 			    pinyin: 'ba4 ba5',
-			    definition: '(informal) father/CL:個|个[ge4],位[wei4]' } ] 
+			    definition: '(informal) father/CL:個|个[ge4],位[wei4]' } ]
 			];
 		assert.deepEqual(hanzi.dictionarySearch('爸', 'only'), expected);
 	});
@@ -498,8 +517,99 @@ describe('hanzidictionary', function(){
 		  [ { traditional: '阿爸父',
 		      simplified: '阿爸父',
 		      pinyin: 'A1 ba4 fu4',
-		      definition: 'Abba (Aramaic word father)/by ext. God the Father in Christian gospel' } ] 
+		      definition: 'Abba (Aramaic word father)/by ext. God the Father in Christian gospel' } ]
 		];
 		assert.deepEqual(hanzi.dictionarySearch('爸'), expected);
 	});
+});
+
+describe('decomposeMany', () => {
+  it('returns three characters', () => {
+    assert.deepEqual(hanzi.decomposeMany('和挂爱'), {
+      和: {
+        character: '和',
+        components1: ['禾', '口'],
+        components2: ['禾', '口'],
+        components3: ['㇒', '一', '丨', '八', '口'],
+      },
+      挂: {
+        character: '挂',
+        components1: ['扌', '圭'],
+        components2: ['扌', '圭'],
+        components3: ['亅', '二', '圭'],
+      },
+      爱: {
+        character: '爱',
+        components1: ['No glyph available', '友'],
+        components2: ['爫', '冖', '𠂇', '又'],
+        components3: ['爫', '冖', '𠂇', '㇇', '㇏'],
+      },
+    },
+    );
+  });
+});
+
+describe('getExamples', () => {
+  it('simplified', () => {
+    const examples = hanzi.getExamples('爱');
+    assert.equal(examples.length, 3);
+    assert.deepEqual(examples[0], [
+      {
+        traditional: '可愛',
+        simplified: '可爱',
+        pinyin: 'ke3 ai4',
+        definition: 'adorable/cute/lovely',
+      },
+      {
+        traditional: '愛',
+        simplified: '爱',
+        pinyin: 'ai4',
+        definition: 'to love/affection/to be fond of/to like',
+      },
+      {
+        traditional: '愛情',
+        simplified: '爱情',
+        pinyin: 'ai4 qing2',
+        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]',
+      },
+      {
+        traditional: '親愛',
+        simplified: '亲爱',
+        pinyin: 'qin1 ai4',
+        definition: 'dear/beloved/darling',
+      }],
+    );
+  });
+
+  it('traditional', () => {
+    const examples = hanzi.getExamples('愛');
+
+    assert.equal(examples.length, 3);
+    assert.deepEqual(examples[0], [
+      {
+        traditional: '可愛',
+        simplified: '可爱',
+        pinyin: 'ke3 ai4',
+        definition: 'adorable/cute/lovely',
+      },
+      {
+        traditional: '愛',
+        simplified: '爱',
+        pinyin: 'ai4',
+        definition: 'to love/affection/to be fond of/to like',
+      },
+      {
+        traditional: '愛情',
+        simplified: '爱情',
+        pinyin: 'ai4 qing2',
+        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]',
+      },
+      {
+        traditional: '親愛',
+        simplified: '亲爱',
+        pinyin: 'qin1 ai4',
+        definition: 'dear/beloved/darling',
+      }],
+    );
+  });
 });
