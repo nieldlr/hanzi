@@ -6,12 +6,6 @@
   "version": "1.1.0",
   "license": "MIT",
   "main": "index.js",
-  "browserify": {
-    "transform": ["brfs"]
-  },
-  "browser": {
-    "coffee-script": false
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:nieldlr/Hanzi.git"
@@ -32,7 +26,6 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "brfs": "~1.2.0",
     "husky": "^0.14.3",
     "jest-cli": "^20.0.0",
     "lint-staged": "^4.2.2",
