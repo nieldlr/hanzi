@@ -1,5 +1,10 @@
 # HanziJS
 
+[![NPM version](https://img.shields.io/npm/v/hanzi.svg?style=flat-square)](https://npmjs.org/package/hanzi)
+[![Build Status](https://img.shields.io/travis/nieldlr/Hanzi/master.svg?style=flat-square)](https://travis-ci.org/nieldlr/hanzi)
+[![Coverage Status](https://img.shields.io/codecov/c/github/nieldlr/hanzi/master.svg?style=flat-square)](https://codecov.io/gh/nieldlr/hanzi/branch/master)
+[![codecov](https://codecov.io/gh/nieldlr/Hanzi/branch/master/graph/badge.svg)](https://codecov.io/gh/nieldlr/Hanzi)
+
 HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js. It is primarily written to help provide a framework for Chinese language learners to explore Chinese.
 
 At present features include:
@@ -37,12 +42,12 @@ hanzi.start();
 
 #### hanzi.decompose(character, type of decomposition);
 
-A function that takes a Chinese character and returns an object with decomposition data. Type of decomposition is optional. 
+A function that takes a Chinese character and returns an object with decomposition data. Type of decomposition is optional.
 
-Type of decomposition levels: 
+Type of decomposition levels:
 
-* 1 - "Once" (only decomposes character once), 
-* 2 - "Radical" (decomposes character into its lowest radical components), 
+* 1 - "Once" (only decomposes character once),
+* 2 - "Radical" (decomposes character into its lowest radical components),
 * 3 - "Graphical" (decomposes into lowest forms, will be mostly strokes and small indivisable units)
 
 ```javascript
@@ -70,17 +75,17 @@ A function that takes a string of characters and returns one object for all char
 var decomposition = hanzi.decomposeMany('爱橄黃');
 console.log(decomposition);
 
-{ '爱': 
+{ '爱':
    { character: '爱',
      components1: [ 'No glyph available', '友' ],
      components2: [ '爫', '冖', '𠂇', '又' ],
      components3: [ '爫', '冖', '𠂇', '㇇', '㇏' ] },
-  '橄': 
+  '橄':
    { character: '橄',
      components1: [ '木', '敢' ],
      components2: [ '木', 'No glyph available', '耳', '⺙' ],
      components3: [ '一', '丨', '八', '匚', '二', '丨', '二', '丿', '一', '乂' ] },
-  '黃': 
+  '黃':
    { character: '黃',
      components1: [ '廿', 'No glyph available' ],
      components2: [ '黃' ],
@@ -125,7 +130,7 @@ console.log(hanzi.definitionLookup('雪'));
 
 #### hanzi.dictionarySearch(characters, search type);
 
-Searches the dictionary based on input. Search type changes what data it returns. Defaults to 
+Searches the dictionary based on input. Search type changes what data it returns. Defaults to
 
 Search type paramaters:
 
@@ -282,7 +287,7 @@ console.log(hanzi.segment("我們都是陌生人。"));
 
 #### hanzi.getPinyin(character);
 
-Returns all possible pinyin data for a character. 
+Returns all possible pinyin data for a character.
 
 ```javascript
 console.log(hanzi.getPinyin('的'));
@@ -349,7 +354,7 @@ The object returned is organized by the possible pronunciations of the character
 ```javascript
 console.log(hanzi.determinePhoneticRegularity('洋'));
 
-{ yang2: 
+{ yang2:
    { character: '洋',
      component: [ '氵', '羊', '羊', '氵', '羊', '羊' ],
      phoneticpinyin: [ 'shui3', 'Yang2', 'yang2', 'shui3', 'Yang2', 'yang2' ],
@@ -374,7 +379,7 @@ HanziJS is used in the following projects:
 
 ## Contributors
 
-* [nieldlr (Author)](http://github.com/nieldlr) 
+* [nieldlr (Author)](http://github.com/nieldlr)
 * [djuretic](http://github.com/djuretic)
 * [nikdvp](http://github.com/nikvdp)
 * [hermanschaaf](http://github.com/hermanschaaf)
