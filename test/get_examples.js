@@ -12,27 +12,27 @@ describe('getExamples', () => {
         traditional: '可愛',
         simplified: '可爱',
         pinyin: 'ke3 ai4',
-        definition: 'adorable/cute/lovely',
+        definition: 'adorable/cute/lovely'
       },
       {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like',
+        definition: 'to love/affection/to be fond of/to like'
       },
       {
         traditional: '愛情',
         simplified: '爱情',
         pinyin: 'ai4 qing2',
-        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]',
+        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]'
       },
       {
         traditional: '親愛',
         simplified: '亲爱',
         pinyin: 'qin1 ai4',
-        definition: 'dear/beloved/darling',
-      }],
-    );
+        definition: 'dear/beloved/darling'
+      }
+    ]);
   });
 
   it('traditional', () => {
@@ -44,26 +44,26 @@ describe('getExamples', () => {
         traditional: '可愛',
         simplified: '可爱',
         pinyin: 'ke3 ai4',
-        definition: 'adorable/cute/lovely',
+        definition: 'adorable/cute/lovely'
       },
       {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like',
+        definition: 'to love/affection/to be fond of/to like'
       },
       {
         traditional: '愛情',
         simplified: '爱情',
         pinyin: 'ai4 qing2',
-        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]',
+        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]'
       },
       {
         traditional: '親愛',
         simplified: '亲爱',
         pinyin: 'qin1 ai4',
-        definition: 'dear/beloved/darling',
-      }],
-    );
+        definition: 'dear/beloved/darling'
+      }
+    ]);
   });
 });
