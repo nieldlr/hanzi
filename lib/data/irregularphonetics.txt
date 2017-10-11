@@ -1,4 +1,4 @@
-咅:pou3
+module.exports = `咅:pou3
 昷:wen1
 罙:shen1
 畐:fu2
@@ -203,4 +203,4 @@
 蕰:fill
 豂:fill
 塄:fill
-砘:fill6000
+砘:fill6000`;

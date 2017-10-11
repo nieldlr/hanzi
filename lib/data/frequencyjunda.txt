@@ -1,4 +1,4 @@
-1	的	7922684	4.09432531783	de/di2/di4	(possessive particle)/of, really and truly, aim/clear
+module.exports = `1	的	7922684	4.09432531783	de/di2/di4	(possessive particle)/of, really and truly, aim/clear
 2	一	3050722	5.67089309742	yi1	one/1/single/a(n)
 3	是	2615490	7.02253944928	shi4	is/are/am/yes/to be
 4	不	2237915	8.17906065392	bu4/bu2	(negative prefix)/not/no
@@ -9930,4 +9930,4 @@
 9930	鱄	1	99.9999984496	tuan2	
 9931	鱓	1	99.9999989664	tuo2	
 9932	鲖	1	99.9999994832	tong2	
-9933	鴒	1	100	ling2
+9933	鴒	1	100	ling2`;
