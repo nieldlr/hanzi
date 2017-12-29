@@ -24,3 +24,4 @@ v0.6.0 - Fix frequency info for some traditional characters. Traditional charact
 v0.7.0 - Add a new function getCharacterInFrequencyListByPosition which grabs a character in the frequency list.
 v1.0.0 - Changes which frequency data we use. A new list removes the traditional variants of simplified characters. Meaning some characters from a frequency perspective were in there twice which caused odd side-effects.
 v1.1.0 - Bug fix for getCharacterFrequency, where characters with no simplified variant in the list returned empty.
+v2.0.0 - Lots of changes under the hood thanks to zurawiki. Now compatible with webpack + better testing environment.
