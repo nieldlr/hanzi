@@ -1,7 +1,7 @@
 # HanziJS
 
 [![NPM version](https://img.shields.io/npm/v/hanzi.svg?style=flat-square)](https://npmjs.org/package/hanzi)
-[![Build Status](https://img.shields.io/travis/nieldlr/Hanzi/master.svg?style=flat-square)](https://travis-ci.org/nieldlr/hanzi)
+[![Build Status](https://img.shields.io/travis/nieldlr/Hanzi/master.svg?style=flat-square)](https://travis-ci.org/nieldlr/Hanzi)
 [![Coverage Status](https://img.shields.io/codecov/c/github/nieldlr/hanzi/master.svg?style=flat-square)](https://codecov.io/gh/nieldlr/hanzi/branch/master)
 [![codecov](https://codecov.io/gh/nieldlr/Hanzi/branch/master/graph/badge.svg)](https://codecov.io/gh/nieldlr/Hanzi)
 
