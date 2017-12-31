@@ -16,7 +16,9 @@
   },
   "scripts": {
     "test": "jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html"
   },
   "lint-staged": {
     "{index.js,*.json,lib/*.js,test/*.js}": ["prettier --write", "git add"]
