@@ -1,9 +1,9 @@
 # HanziJS
 
 [![NPM version](https://img.shields.io/npm/v/hanzi.svg?style=flat-square)](https://npmjs.org/package/hanzi)
-[![Build Status](https://img.shields.io/travis/nieldlr/Hanzi/master.svg?style=flat-square)](https://travis-ci.org/nieldlr/Hanzi)
+[![Build Status](https://img.shields.io/travis/nieldlr/hanzi/master.svg?style=flat-square)](https://travis-ci.org/nieldlr/hanzi)
 [![Coverage Status](https://img.shields.io/codecov/c/github/nieldlr/hanzi/master.svg?style=flat-square)](https://codecov.io/gh/nieldlr/hanzi/branch/master)
-[![codecov](https://codecov.io/gh/nieldlr/Hanzi/branch/master/graph/badge.svg)](https://codecov.io/gh/nieldlr/Hanzi)
+[![codecov](https://codecov.io/gh/nieldlr/Hanzi/branch/master/graph/badge.svg)](https://codecov.io/gh/nieldlr/hanzi)
 
 HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js. It is primarily written to help provide a framework for Chinese language learners to explore Chinese.
 
