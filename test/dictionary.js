@@ -117,6 +117,25 @@ describe('hanzidictionary', function() {
     assert.deepEqual(hanzi.definitionLookup('糺'), expected);
   });
 
+  it('should look up a definition of 参 for a traditional variant 參 that has multiple simplified variants', function() {
+    var expected = [
+      {
+        traditional: '參',
+        simplified: '参',
+        pinyin: 'can1',
+        definition:
+          'take part in/participate/join/attend/to join/unequal/varied/irregular/to counsel/uneven/not uniform/abbr. for 參議院|参议院 Senate, Upper House'
+      },
+      {
+        traditional: '參',
+        simplified: '参',
+        pinyin: 'shen1',
+        definition: 'ginseng'
+      }
+    ];
+    assert.deepEqual(hanzi.definitionLookup('参'), expected);
+  });
+
   it('should fail looking up a definition with dirty input', function() {
     assert.deepEqual(hanzi.definitionLookup('%'), undefined);
   });
