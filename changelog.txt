@@ -26,3 +26,4 @@ v1.0.0 - Changes which frequency data we use. A new list removes the traditional
 v1.1.0 - Bug fix for getCharacterFrequency, where characters with no simplified variant in the list returned empty.
 v2.0.0 - Lots of changes under the hood thanks to zurawiki. Now compatible with webpack + better testing environment.
 v2.1.0 - React-native under the hood fix. Thanks to zurawiki.
+v2.1.1 - Fix bug where 参 failed to lookup in dictionary.
