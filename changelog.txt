@@ -27,3 +27,4 @@ v1.1.0 - Bug fix for getCharacterFrequency, where characters with no simplified 
 v2.0.0 - Lots of changes under the hood thanks to zurawiki. Now compatible with webpack + better testing environment.
 v2.1.0 - React-native under the hood fix. Thanks to zurawiki.
 v2.1.1 - Fix bug where 参 failed to lookup in dictionary.
+v2.1.2 - Fix bug where 了 failed to return all the correct dictionary entries.
