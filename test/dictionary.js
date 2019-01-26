@@ -764,12 +764,12 @@ describe('hanzidictionary', function() {
   });
 
   it('should get pinyin in utf8 format', function() {
-    expected = ['ài'];
+    var expected = ['ài'];
     assert.deepEqual(hanzi.getPinyin('爱', (utf8 = true)), expected);
   });
 
   it('should get pinyin with u: in utf8 format', function() {
-    expected = ['yī lǜ'];
+    var expected = ['yī lǜ'];
     assert.deepEqual(hanzi.getPinyin('一律', (utf8 = true)), expected);
   });
 });
