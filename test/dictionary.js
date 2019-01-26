@@ -762,4 +762,14 @@ describe('hanzidictionary', function() {
     ];
     assert.deepEqual(hanzi.dictionarySearch('爸'), expected);
   });
+
+  it('should get pinyin in utf8 format', function() {
+    var expected = ['ài'];
+    assert.deepEqual(hanzi.getPinyin('爱', (utf8 = true)), expected);
+  });
+
+  it('should get pinyin with u: in utf8 format', function() {
+    var expected = ['yī lǜ'];
+    assert.deepEqual(hanzi.getPinyin('一律', (utf8 = true)), expected);
+  });
 });
