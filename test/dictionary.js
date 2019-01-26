@@ -136,6 +136,31 @@ describe('hanzidictionary', function() {
     assert.deepEqual(hanzi.definitionLookup('参'), expected);
   });
 
+  it('should look up a definition of 了 correctly which multiple entries across the whole dictionary', function() {
+    var expected = [
+      {
+        traditional: '了',
+        simplified: '了',
+        pinyin: 'le5',
+        definition:
+          '(modal particle intensifying preceding clause)/(completed action marker)'
+      },
+      {
+        traditional: '了',
+        simplified: '了',
+        pinyin: 'liao3',
+        definition: 'to finish/to achieve/to understand'
+      },
+      {
+        traditional: '瞭',
+        simplified: '了',
+        pinyin: 'liao3',
+        definition: '(of eyes) bright/clear-sighted/to understand clearly'
+      }
+    ];
+    assert.deepEqual(hanzi.definitionLookup('了'), expected);
+  });
+
   it('should fail looking up a definition with dirty input', function() {
     assert.deepEqual(hanzi.definitionLookup('%'), undefined);
   });
