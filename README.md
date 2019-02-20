@@ -386,6 +386,7 @@ HanziJS is used in the following projects:
 * [raylillywhite](http://github.com/raylillywhite)
 * [zurawiki](http://github.com/zurawiki)
 * [zedwill](http://github.com/zedwill)
+* [mkmoisen](http://github.com/mkmoisen)
 
 ## License
 
