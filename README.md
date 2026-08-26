@@ -41,6 +41,7 @@ Type of decomposition levels:
 * 1 - "Once" (only decomposes character once),
 * 2 - "Radical" (decomposes character into its lowest radical components),
 * 3 - "Graphical" (decomposes into lowest forms, will be mostly strokes and small indivisable units)
+* 4 - "Primitive" (decomposes into meaningful building blocks — 基础部件 — stopping at recognisable components instead of strokes; keeps fused/contained/surrounding shapes whole, preserves independent single strokes, and surfaces a coherent component that has no Unicode glyph as `No glyph available`)
 
 ```javascript
 var decomposition = hanzi.decompose('爱');
@@ -49,7 +50,8 @@ console.log(decomposition);
 { character: '爱',
   components1: [ 'No glyph available', '友' ],
   components2: [ '爫', '冖', '𠂇', '又' ],
-  components3: [ '爫', '冖', '𠂇', '㇇', '㇏' ] }
+  components3: [ '爫', '冖', '𠂇', '㇇', '㇏' ],
+  components4: [ '爫', '冖', '𠂇', '又' ] }
 
 //Example of forced level decomposition
 
@@ -58,6 +60,16 @@ console.log(decomposition);
 
 { character: '爱', components: [ '爫', '冖', '𠂇', '又' ] }
 ```
+
+The "Primitive" level (4) is designed to stop at meaningful components rather than
+over-splitting into strokes the way "Radical" (2) can. For example `hanzi.decompose('成', 2)`
+returns `[ '一', '丿', '㇆', '戈' ]`, while `hanzi.decompose('成', 4)` returns `[ '万', '戈' ]`.
+It stops at a recognisable radical rather than breaking it into strokes — e.g.
+`hanzi.decompose('当', 4)` returns `[ '⺌', '彐' ]` (not `[ '⺌', '㇕', '二' ]`) and
+`hanzi.decompose('所', 4)` returns `[ '戶', '斤' ]`. When part of a glyph is a
+coherent shape with no Unicode codepoint, the whole recognisable glyph is kept
+rather than shredding it into loose strokes — so `hanzi.decompose('售', 4)`
+returns `[ '隹', '口' ]` and `hanzi.decompose('钱', 4)` returns `[ '钅', '戋' ]`.
 
 #### hanzi.decomposeMany(character string, type of decomposition);
 
@@ -71,17 +83,67 @@ console.log(decomposition);
    { character: '爱',
      components1: [ 'No glyph available', '友' ],
      components2: [ '爫', '冖', '𠂇', '又' ],
-     components3: [ '爫', '冖', '𠂇', '㇇', '㇏' ] },
+     components3: [ '爫', '冖', '𠂇', '㇇', '㇏' ],
+     components4: [ '爫', '冖', '𠂇', '又' ] },
   '橄':
    { character: '橄',
      components1: [ '木', '敢' ],
      components2: [ '木', 'No glyph available', '耳', '⺙' ],
-     components3: [ '一', '丨', '㇒', '㇒', '匚', '一', '一', '丨', '丨', '一', '一', '丿', '一', '㇒', '㇒' ] },
+     components3: [ '一', '丨', '㇒', '㇒', '匚', '一', '一', '丨', '丨', '一', '一', '丿', '一', '㇒', '㇒' ],
+     components4: [ '木', '匚', '耳', '⺙' ] },
   '黃':
    { character: '黃',
      components1: [ '廿', 'No glyph available' ],
      components2: [ '黃' ],
-     components3: [ '卄', '一', '一', '一', '一', '丨', '凵', '㇒', '㇒' ] } }
+     components3: [ '卄', '一', '一', '一', '一', '丨', '凵', '㇒', '㇒' ],
+     components4: [ '廿', '一', '由', '八' ] } }
+```
+
+#### hanzi.getDecompositionTree(character, type);
+
+Returns a nested decomposition **tree** for a character (rather than the flat
+array `hanzi.decompose` gives). `type` is either:
+
+* `'primitive'` (default) — recurses down until it reaches primitives (基础部件),
+  the same stopping points as `decompose(character, 4)`. Keeps a fused/contained
+  frame whole.
+* `'graphical'` — continues all the way down to strokes, the same leaves as
+  `decompose(character, 3)`.
+
+Each node is `{ character, children }`; a leaf has an empty `children` array. A
+coherent component that has no Unicode glyph is surfaced as
+`{ character: 'No glyph available', id: <number>, children: [] }`, where `id` is
+its identifier in the underlying data. The flat level-3 and level-4
+decompositions are exactly the in-order leaves of the `'graphical'` and
+`'primitive'` trees, so the two views never disagree.
+
+```javascript
+// primitive tree — stops at recognisable building blocks
+console.log(hanzi.getDecompositionTree('哀', 'primitive'));
+
+{ character: '哀',
+  children:
+   [ { character: '衣', children: [] },
+     { character: '口', children: [] } ] }
+
+// a glyph-less stroke-blob is one leaf carrying its data id
+console.log(hanzi.getDecompositionTree('师', 'primitive'));
+
+{ character: '师',
+  children:
+   [ { character: 'No glyph available', id: '37207', children: [] },
+     { character: '帀', children: [] } ] }
+
+// graphical tree — continues down to strokes
+console.log(hanzi.getDecompositionTree('大', 'graphical'));
+
+{ character: '大',
+  children:
+   [ { character: '人',
+       children:
+        [ { character: '㇒', children: [] },
+          { character: '㇒', children: [] } ] },
+     { character: '一', children: [] } ] }
 ```
 
 #### hanzi.ifComponentExists(character/component);
@@ -94,6 +156,24 @@ console.log(hanzi.ifComponentExists('乂'));
 true
 
 console.log(hanzi.ifComponentExists('$'));
+
+false
+```
+
+#### hanzi.isPrimitive(character/component);
+
+Check if a character/component is a primitive building block — i.e. whether
+primitive decomposition (level 4) stops at it rather than breaking it into
+smaller components. Fused/contained shapes (大, 木, 哀), stroke-cluster units
+(八, 二) and single strokes count as primitives; compounds do not. Returns a
+boolean.
+
+```javascript
+console.log(hanzi.isPrimitive('木'));
+
+true
+
+console.log(hanzi.isPrimitive('成')); // decomposes to 万, 戈
 
 false
 ```
@@ -337,6 +417,8 @@ The sample above is truncated for brevity. The full result is longer, because a 
 
 This function takes a decomposition object created by hanzi.decompose() or a character, then returns an object that displays all possible combinations of phonetic regularity relationship of the character to all its components.
 
+The components it scores are drawn from the whole **primitive decomposition tree** — every node in the tree, both internal grouping nodes and leaves (deduplicated). This lets it catch a phonetic component that sits at an intermediate node (e.g. `相` inside `想`, or `果` inside `裹`) rather than only the outermost split.
+
 Phonetic Regularity Scale:
 
 *   0 = No regularity
@@ -345,16 +427,25 @@ Phonetic Regularity Scale:
 *   3 = Similar in Initial (alliterates)
 *   4 = Similar in Final (rhymes)
 
-The object returned is organized by the possible pronunciations of the character. You may notice duplicate entries in the fields, but these are there based on the similarities between the decomposition levels. It is up to the developer to use this data or not.
+The object returned is organized by the possible pronunciations of the character. A component may appear more than once when it has multiple readings (each reading is scored separately). It is up to the developer to use this data or not.
 
 ```javascript
 console.log(hanzi.determinePhoneticRegularity('洋'));
 
 { yang2:
    { character: '洋',
-     component: [ '氵', '羊', '羊', '氵', '羊', '羊' ],
-     phoneticpinyin: [ 'shui3', 'Yang2', 'yang2', 'shui3', 'Yang2', 'yang2' ],
-     regularity: [ 0, 1, 1, 0, 1, 1 ] } }
+     component: [ '氵', '羊', '羊' ],
+     phoneticpinyin: [ 'shui3', 'Yang2', 'yang2' ],
+     regularity: [ 0, 1, 1 ] } }
+
+// 果 (guo3) is an internal tree node of 裹, and is still found (exact match):
+console.log(hanzi.determinePhoneticRegularity('裹'));
+
+{ guo3:
+   { character: '裹',
+     component: [ '衣', '衣', '果', '田', '田', '木', '木' ],
+     phoneticpinyin: [ 'yi1', 'yi4', 'guo3', 'Tian2', 'tian2', 'Mu4', 'mu4' ],
+     regularity: [ 0, 0, 1, 0, 0, 0, 0 ] } }
 ```
 
 #### hanzi.getRadicalMeaning(radical);
