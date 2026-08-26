@@ -1,9 +1,8 @@
 {
   "name": "hanzi",
   "author": "Niel de la Rouviere",
-  "description":
-    "HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js",
-  "version": "2.2.1",
+  "description": "HanziJS is a Chinese character and NLP module for Chinese language processing for Node.js",
+  "version": "3.0.0",
   "license": "MIT",
   "main": "index.js",
   "repository": {
@@ -21,7 +20,10 @@
     "postcoverage": "opn coverage/lcov-report/index.html"
   },
   "lint-staged": {
-    "{index.js,*.json,lib/*.js,test/*.js}": ["prettier --write", "git add"]
+    "{index.js,*.json,lib/*.js,test/*.js}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "bracketSpacing": false,
