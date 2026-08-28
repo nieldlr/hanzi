@@ -467,11 +467,11 @@ Phonetic Regularity Scale:
 *   3 = Similar in Initial (alliterates)
 *   4 = Similar in Final (rhymes)
 *   5 = Similar in Rhyme — the finals differ only in their medial, e.g. 然 `ran` and its phonetic 犬 `quan`, or 就 `jiu` and 口 `kou` (NEW in v3.1.0)
-*   6 = Similar in Initial and rhyming — a 4 or a 5 whose initials also share a place of articulation, e.g. 现 `xian` and its phonetic 见 `jian` (NEW in v3.1.0)
+*   6 = Similar in Initial and rhyming — a 4 or a 5 whose initials are *different* but share a place of articulation, e.g. 现 `xian` and its phonetic 见 `jian` (NEW in v3.1.0)
 
 The initials and finals are computed with [hanzi.parsePinyin()](#hanziparsepinyinpinyin---new-in-v310), so syllables are compared by the sounds they represent rather than by how they are spelled: 就 `jiu4` and 尤 `you2` rhyme (both `iou`), while 去 `qu4` and 土 `tu3` do not (`ü` against `u`).
 
-Scale 6 exists because a shared final is easy to hit by chance, but a shared final under a near-identical initial usually is not. The grouped initials are the ones that differ only in aspiration or in stop-vs-fricative manner, and so are readily confused by ear:
+Scale 6 exists because a shared final is easy to hit by chance, but a shared final under a near-miss initial usually is not. The grouped initials are the ones that differ only in aspiration or in stop-vs-fricative manner, and so are readily confused by ear:
 
 | group | character | phonetic |
 | --- | --- | --- |
@@ -483,6 +483,8 @@ Scale 6 exists because a shared final is easy to hit by chance, but a shared fin
 | zh, ch, sh | 张 `zhang1` | 长 `chang2` |
 
 `m`, `f`, `n`, `l`, `h` and `r` are ungrouped — each is the only Mandarin initial at its place and manner — so a pair like 是 `shi4` / 日 `ri4` stays at 4.
+
+The two initials must actually differ. A pair that already shares its initial is a plain match rather than a near miss, so 解 `jie3` / 角 `jue2` stays at 5.
 
 The object returned is organized by the possible pronunciations of the character. A component may appear more than once when it has multiple readings (each reading is scored separately). It is up to the developer to use this data or not.
 
