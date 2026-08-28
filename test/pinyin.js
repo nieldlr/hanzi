@@ -1,5 +1,6 @@
 const assert = require('assert');
 const hanzi = require('../index.js');
+const pinyin = require('../lib/pinyin.js');
 
 hanzi.start();
 
@@ -176,5 +177,53 @@ describe('phonetic regularity scale', function() {
     assert.equal(scale('然', 'ran2', 'quan3'), 5); // an / üan
     assert.equal(scale('同', 'tong2', 'jiong1'), 5); // ong / iong
     assert.equal(scale('问', 'wen4', 'men2'), 5); // uen / en
+  });
+
+  it('scores a rhyme carried by a related initial as 6', function() {
+    assert.equal(scale('现', 'xian4', 'jian4'), 6); // j and x, both -ian
+    assert.equal(scale('知', 'zhi1', 'shi3'), 6); // zh and sh, both the empty rhyme
+    assert.equal(scale('起', 'qi3', 'ji3'), 6); // q and j, both -i
+    assert.equal(scale('解', 'jie3', 'jue2'), 6); // same initial, ie / üe
+  });
+
+  it('leaves unrelated initials on the plain rhyme tiers', function() {
+    assert.equal(scale('是', 'shi4', 'ri4'), 4); // r is in no group
+    assert.equal(scale('地', 'de5', 'ye3'), 5); // zero initial against d
+  });
+});
+
+describe('initial similarity groups', function() {
+  const pairs = [
+    ['b', 'p'],
+    ['d', 't'],
+    ['g', 'k'],
+    ['j', 'q'],
+    ['q', 'x'],
+    ['z', 'c'],
+    ['c', 's'],
+    ['zh', 'ch'],
+    ['ch', 'sh']
+  ];
+
+  it('groups initials that share a place of articulation', function() {
+    pairs.forEach(function(pair) {
+      assert(pinyin.sameInitialGroup(pair[0], pair[1]), pair.join(' + '));
+      assert(pinyin.sameInitialGroup(pair[1], pair[0]), pair.join(' + '));
+    });
+  });
+
+  it('keeps the retroflex and dental series apart', function() {
+    assert.equal(pinyin.sameInitialGroup('zh', 'z'), false);
+    assert.equal(pinyin.sameInitialGroup('ch', 'c'), false);
+    assert.equal(pinyin.sameInitialGroup('sh', 's'), false);
+    assert.equal(pinyin.sameInitialGroup('r', 'zh'), false);
+    assert.equal(pinyin.sameInitialGroup('n', 'l'), false);
+    assert.equal(pinyin.sameInitialGroup('h', 'g'), false);
+  });
+
+  it('treats an initial as similar to itself but never the empty initial', function() {
+    assert.equal(pinyin.sameInitialGroup('m', 'm'), true);
+    assert.equal(pinyin.sameInitialGroup('', ''), false);
+    assert.equal(pinyin.sameInitialGroup('', 'b'), false);
   });
 });

@@ -35,4 +35,4 @@ v2.1.6 - Update decomposition for 亍, 于, 将 and correct radicals: 廾 & 襾
 v2.2.0 - Fix decomposition of characters with repeated components (林, 森, 品, 众, etc.).
 v2.2.1 - Update decomposition error for 之.
 v3.0.0 - Adds primitive decomposition, quite a few changes to underlying data included.
-v3.1.0 - Adds parsePinyin, which splits a pinyin syllable into its true initial and final per 汉语拼音方案 (有 you and 牛 niu now both give the final iou). determinePhoneticRegularity uses it, so rhyme and alliteration matching is no longer fooled by pinyin spelling, and gains scale 5 for finals that differ only in their medial.
+v3.1.0 - Adds parsePinyin, which splits a pinyin syllable into its true initial and final (eg 有 you and 牛 niu now both give the final iou). determinePhoneticRegularity uses it, so rhyme and alliteration matching is no longer fooled by pinyin spelling. Adds two new regularity matching tiers.

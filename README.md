@@ -467,8 +467,22 @@ Phonetic Regularity Scale:
 *   3 = Similar in Initial (alliterates)
 *   4 = Similar in Final (rhymes)
 *   5 = Similar in Rhyme — the finals differ only in their medial, e.g. 然 `ran` and its phonetic 犬 `quan`, or 就 `jiu` and 口 `kou` (NEW in v3.1.0)
+*   6 = Similar in Initial and rhyming — a 4 or a 5 whose initials also share a place of articulation, e.g. 现 `xian` and its phonetic 见 `jian` (NEW in v3.1.0)
 
 The initials and finals are computed with [hanzi.parsePinyin()](#hanziparsepinyinpinyin---new-in-v310), so syllables are compared by the sounds they represent rather than by how they are spelled: 就 `jiu4` and 尤 `you2` rhyme (both `iou`), while 去 `qu4` and 土 `tu3` do not (`ü` against `u`).
+
+Scale 6 exists because a shared final is easy to hit by chance, but a shared final under a near-identical initial usually is not. The grouped initials are the ones that differ only in aspiration or in stop-vs-fricative manner, and so are readily confused by ear:
+
+| group | character | phonetic |
+| --- | --- | --- |
+| b, p | 判 `pan4` | 半 `ban4` |
+| d, t | 停 `ting2` | 丁 `ding1` |
+| g, k | 空 `kong1` | 工 `gong1` |
+| j, q, x | 现 `xian4` | 见 `jian4` |
+| z, c, s | 增 `zeng1` | 曾 `ceng2` |
+| zh, ch, sh | 张 `zhang1` | 长 `chang2` |
+
+`m`, `f`, `n`, `l`, `h` and `r` are ungrouped — each is the only Mandarin initial at its place and manner — so a pair like 是 `shi4` / 日 `ri4` stays at 4.
 
 The object returned is organized by the possible pronunciations of the character. A component may appear more than once when it has multiple readings (each reading is scored separately). It is up to the developer to use this data or not.
 
