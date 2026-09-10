@@ -367,6 +367,46 @@ console.log(hanzi.getPinyin('的'));
 [ 'de5', 'di2', 'di4' ]
 ```
 
+#### hanzi.parsePinyin(pinyin); - NEW in v3.1.0
+
+Splits a pinyin syllable into its underlying initial (声母) and final (韵母), following 《汉语拼音方案》.
+
+Pinyin spelling is not a phonemic transcription, so slicing a syllable at the first vowel gives the wrong answer. The same final is written differently depending on whether the syllable has an initial: 有 `you` and 牛 `niu` share the final `iou`, but the standard writes the zero-initial form as `you` and abbreviates the post-initial form to `iu`. This function undoes those conventions, so syllables that actually rhyme compare as equal.
+
+Accepts tone-numbered or toneless pinyin, in any case, with ü written as `ü`, `u:` or `v`.
+
+```javascript
+console.log(hanzi.parsePinyin('niu2'));
+
+{ raw: 'niu2',
+  syllable: 'niu',
+  tone: 2,
+  initial: 'n',
+  final: 'iou',
+  medial: 'i',
+  rhyme: 'ou',
+  emptyRhyme: false }
+
+// same final, no initial
+console.log(hanzi.parsePinyin('you3').final);   // 'iou'
+console.log(hanzi.parsePinyin('gui1').final);   // 'uei'  (not 'ui')
+console.log(hanzi.parsePinyin('wen1').final);   // 'uen'  (not 'en')
+console.log(hanzi.parsePinyin('jun1').final);   // 'ün'   (not 'un')
+console.log(hanzi.parsePinyin('lu:4').final);   // 'ü'
+```
+
+The fields are:
+
+*   `syllable` — the syllable without its tone, normalised so that ü is always written `ü`
+*   `tone` — 1-5, or `null` if the input carried no tone
+*   `initial` — the 声母, an empty string for zero-initial syllables. `y` and `w` are never initials; the scheme treats them as spellings of the medials `i`/`u`/`ü`
+*   `final` — the 韵母
+*   `medial` — the 韵头 (`''`, `i`, `u` or `ü`)
+*   `rhyme` — what remains of the final once the medial is removed, so that finals differing only in their medial can be compared (然 `ran` and 犬 `quan` both have the rhyme `an`)
+*   `emptyRhyme` — `true` for the `i` of 知, 吃, 诗, 日, 资, 雌, 思, which the scheme spells the same as the `i` of 比, 机, 西 but which does not rhyme with it
+
+Returns `null` for anything that is not a Mandarin syllable, including the syllabic nasals (`m`, `n`, `ng`, `hng`) and the `_stroke` / `_number` sentinels that `getPinyin` returns for componentry with no reading.
+
 #### hanzi.getCharacterFrequency(character);
 
 Returns frequency data for a character based on the Junda corpus. The data is in simplified characters, but I made the function script agnostic. So both traditional and simplified will return the same data.
@@ -426,6 +466,25 @@ Phonetic Regularity Scale:
 *   2 = Syllable Match (without tone)
 *   3 = Similar in Initial (alliterates)
 *   4 = Similar in Final (rhymes)
+*   5 = Similar in Rhyme — the finals differ only in their medial, e.g. 然 `ran` and its phonetic 犬 `quan`, or 就 `jiu` and 口 `kou` (NEW in v3.1.0)
+*   6 = Similar in Initial and rhyming — a 4 or a 5 whose initials are *different* but share a place of articulation, e.g. 现 `xian` and its phonetic 见 `jian` (NEW in v3.1.0)
+
+The initials and finals are computed with [hanzi.parsePinyin()](#hanziparsepinyinpinyin---new-in-v310), so syllables are compared by the sounds they represent rather than by how they are spelled: 就 `jiu4` and 尤 `you2` rhyme (both `iou`), while 去 `qu4` and 土 `tu3` do not (`ü` against `u`).
+
+Scale 6 exists because a shared final is easy to hit by chance, but a shared final under a near-miss initial usually is not. The grouped initials are the ones that differ only in aspiration or in stop-vs-fricative manner, and so are readily confused by ear:
+
+| group | character | phonetic |
+| --- | --- | --- |
+| b, p | 判 `pan4` | 半 `ban4` |
+| d, t | 停 `ting2` | 丁 `ding1` |
+| g, k | 空 `kong1` | 工 `gong1` |
+| j, q, x | 现 `xian4` | 见 `jian4` |
+| z, c, s | 增 `zeng1` | 曾 `ceng2` |
+| zh, ch, sh | 张 `zhang1` | 长 `chang2` |
+
+`m`, `f`, `n`, `l`, `h` and `r` are ungrouped — each is the only Mandarin initial at its place and manner — so a pair like 是 `shi4` / 日 `ri4` stays at 4.
+
+The two initials must actually differ. A pair that already shares its initial is a plain match rather than a near miss, so 解 `jie3` / 角 `jue2` stays at 5.
 
 The object returned is organized by the possible pronunciations of the character. A component may appear more than once when it has multiple readings (each reading is scored separately). It is up to the developer to use this data or not.
 
