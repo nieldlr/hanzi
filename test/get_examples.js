@@ -18,13 +18,14 @@ describe('getExamples', () => {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like'
+        definition:
+          'to love; to be fond of; to like/affection/to be inclined (to do sth); to tend to (happen)'
       },
       {
         traditional: '愛情',
         simplified: '爱情',
         pinyin: 'ai4 qing2',
-        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]'
+        definition: 'romance; love (romantic)/CL:份[fen4]'
       },
       {
         traditional: '親愛',
@@ -50,13 +51,14 @@ describe('getExamples', () => {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like'
+        definition:
+          'to love; to be fond of; to like/affection/to be inclined (to do sth); to tend to (happen)'
       },
       {
         traditional: '愛情',
         simplified: '爱情',
         pinyin: 'ai4 qing2',
-        definition: 'romance/love (romantic)/CL:個|个[ge4],份[fen4]'
+        definition: 'romance; love (romantic)/CL:份[fen4]'
       },
       {
         traditional: '親愛',

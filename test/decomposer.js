@@ -22,7 +22,7 @@ describe('hanzidecomposer', function() {
   });
 
   it("gets a character's pinyin", function() {
-    assert.deepEqual(hanzi.getPinyin('的'), ['de5', 'di2', 'di4']);
+    assert.deepEqual(hanzi.getPinyin('的'), ['de5', 'di1', 'di2', 'di4']);
   });
 
   it("gets a radical's meaning", function() {
@@ -113,8 +113,8 @@ describe('hanzidecomposer', function() {
   });
 
   it('does not find frequency data for a dual-script character whose forms are all unranked', function() {
-    // 嚥 only maps to itself in CC-CEDICT and is unranked in the list.
-    assert.deepEqual(hanzi.getCharacterFrequency('嚥'), 'Character not found');
+    // 钁 maps only to 䦆 in CC-CEDICT and neither form is ranked in the list.
+    assert.deepEqual(hanzi.getCharacterFrequency('钁'), 'Character not found');
   });
 
   it('keeps frequency results unchanged for regular characters', function() {
@@ -336,7 +336,7 @@ describe('hanzidecomposer', function() {
       di1: {
         character: '低',
         component: ['亻', '氐', '氐'],
-        phoneticpinyin: ['ren2', 'di1', 'di3'],
+        phoneticpinyin: ['ren2', 'Di1', 'di3'],
         regularity: [0, 1, 2]
       }
     };

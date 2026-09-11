@@ -10,7 +10,8 @@ describe('hanzidictionary', function() {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like'
+        definition:
+          'to love; to be fond of; to like/affection/to be inclined (to do sth); to tend to (happen)'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('爱'), expected);
@@ -22,7 +23,8 @@ describe('hanzidictionary', function() {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like'
+        definition:
+          'to love; to be fond of; to like/affection/to be inclined (to do sth); to tend to (happen)'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('爱', 's'), expected);
@@ -33,7 +35,8 @@ describe('hanzidictionary', function() {
         traditional: '愛',
         simplified: '爱',
         pinyin: 'ai4',
-        definition: 'to love/affection/to be fond of/to like'
+        definition:
+          'to love; to be fond of; to like/affection/to be inclined (to do sth); to tend to (happen)'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('愛', 't'), expected);
@@ -50,7 +53,7 @@ describe('hanzidictionary', function() {
         traditional: '最後',
         simplified: '最后',
         pinyin: 'zui4 hou4',
-        definition: 'final/last/finally/ultimate'
+        definition: 'final; last; ultimate/finally; in the end'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('最后'), expected);
@@ -59,23 +62,30 @@ describe('hanzidictionary', function() {
   it('should look up a definition with multiple meanings with a common character', function() {
     var expected = [
       {
+        traditional: '咊',
+        simplified: '和',
+        pinyin: 'he2',
+        definition: 'old variant of 和[he2]'
+      },
+      {
         traditional: '和',
         simplified: '和',
         pinyin: 'He2',
-        definition: 'surname He/Japanese (food, clothes etc)'
+        definition: 'surname He'
       },
       {
         traditional: '和',
         simplified: '和',
         pinyin: 'he2',
         definition:
-          'and/together with/with/sum/union/peace/harmony/Taiwan pr. [han4] when it means "and"'
+          '(joining two nouns) and; together with; with (Taiwan pr. [han4])/(math.) sum/to make peace/(sports) to draw; to tie/(bound form) harmonious/(bound form) Japan; Japanese'
       },
       {
         traditional: '和',
         simplified: '和',
         pinyin: 'he4',
-        definition: 'cap (a poem)/to respond in singing'
+        definition:
+          "to compose a poem in reply (to sb's poem) using the same rhyme sequence/to join in the singing/to chime in with others"
       },
       {
         traditional: '和',
@@ -87,13 +97,21 @@ describe('hanzidictionary', function() {
         traditional: '和',
         simplified: '和',
         pinyin: 'huo2',
-        definition: 'soft/warm'
+        definition:
+          'to combine a powdery substance (flour, plaster etc) with water/Taiwan pr. [huo4]'
       },
       {
         traditional: '和',
         simplified: '和',
         pinyin: 'huo4',
-        definition: 'to mix together/to blend'
+        definition:
+          'to mix (ingredients) together/to blend/classifier for rinses of clothes/classifier for boilings of medicinal herbs'
+      },
+      {
+        traditional: '龢',
+        simplified: '和',
+        pinyin: 'he2',
+        definition: '(literary) harmonious (variant of 和[he2])'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('和'), expected);
@@ -104,14 +122,14 @@ describe('hanzidictionary', function() {
       {
         traditional: '糺',
         simplified: '糺',
-        pinyin: 'jiu1',
-        definition: 'archaic variant of 糾|纠[jiu1]'
+        pinyin: 'jiu3',
+        definition: 'army (used during the Liao, Jin and Yuan dynasties)'
       },
       {
         traditional: '糺',
-        simplified: '糺',
-        pinyin: 'jiu3',
-        definition: 'army (used during the Liao, Jin and Yuan dynasties)'
+        simplified: '纠',
+        pinyin: 'jiu1',
+        definition: 'old variant of 糾|纠[jiu1]'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('糺'), expected);
@@ -120,17 +138,47 @@ describe('hanzidictionary', function() {
   it('should look up a definition of 参 for a traditional variant 參 that has multiple simplified variants', function() {
     var expected = [
       {
+        traditional: '㕘',
+        simplified: '参',
+        pinyin: 'can1',
+        definition: 'variant of 參|参[can1]'
+      },
+      {
         traditional: '參',
         simplified: '参',
         pinyin: 'can1',
         definition:
-          'take part in/participate/join/attend/to join/unequal/varied/irregular/to counsel/uneven/not uniform/abbr. for 參議院|参议院 Senate, Upper House'
+          'to take part in/to participate/to join/to attend/to counsel/unequal/varied/irregular/uneven/not uniform/abbr. for 參議院|参议院 Senate, Upper House'
+      },
+      {
+        traditional: '參',
+        simplified: '参',
+        pinyin: 'cen1',
+        definition: 'used in 參差|参差[cen1 ci1]'
       },
       {
         traditional: '參',
         simplified: '参',
         pinyin: 'shen1',
-        definition: 'ginseng'
+        definition: 'ginseng/one of the 28 constellations'
+      },
+      {
+        traditional: '叅',
+        simplified: '参',
+        pinyin: 'can1',
+        definition: 'old variant of 參|参[can1]'
+      },
+      {
+        traditional: '葠',
+        simplified: '参',
+        pinyin: 'shen1',
+        definition: 'variant of 參|参[shen1]'
+      },
+      {
+        traditional: '蓡',
+        simplified: '参',
+        pinyin: 'shen1',
+        definition: 'variant of 參|参[shen1]'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('参'), expected);
@@ -143,19 +191,26 @@ describe('hanzidictionary', function() {
         simplified: '了',
         pinyin: 'le5',
         definition:
-          '(modal particle intensifying preceding clause)/(completed action marker)'
+          '(completed action marker)/(modal particle indicating change of state, situation now)/(modal particle intensifying preceding clause)'
       },
       {
         traditional: '了',
         simplified: '了',
         pinyin: 'liao3',
-        definition: 'to finish/to achieve/to understand'
+        definition:
+          'to finish/(used with 得[de2] or 不[bu4] after a verb to express (im)possibility, as in 忘不了[wang4 bu5 liao3] "cannot forget")/(literary) (usually followed by a negative such as 無|无[wu2] or 不[bu4]) completely (not); entirely (not); (not) in the least/variant of 瞭|了[liao3]'
       },
       {
         traditional: '瞭',
         simplified: '了',
         pinyin: 'liao3',
-        definition: '(of eyes) bright/clear-sighted/to understand clearly'
+        definition: "(bound form) clear in one's mind; to understand clearly"
+      },
+      {
+        traditional: '瞭',
+        simplified: '了',
+        pinyin: 'liao4',
+        definition: 'unofficial variant of 瞭[liao4]'
       }
     ];
     assert.deepEqual(hanzi.definitionLookup('了'), expected);
@@ -169,10 +224,40 @@ describe('hanzidictionary', function() {
     var expected = [
       [
         {
+          traditional: '㝡',
+          simplified: '最',
+          pinyin: 'zui4',
+          definition: 'variant of 最[zui4]'
+        },
+        {
+          traditional: '冣',
+          simplified: '最',
+          pinyin: 'zui4',
+          definition: 'old variant of 最[zui4]'
+        },
+        {
+          traditional: '最',
+          simplified: '最',
+          pinyin: 'zui4',
+          definition:
+            '(before an adjective or verb) to the highest degree; (the) most ...; -est/(after 之[zhi1]) best or most extreme example (e.g. 世界之最[shi4 jie4 zhi1 zui4] "the greatest in the world")'
+        }
+      ],
+      [
+        {
           traditional: '六方最密堆積',
           simplified: '六方最密堆积',
           pinyin: 'liu4 fang1 zui4 mi4 dui1 ji1',
-          definition: 'hexagonal close-packed (HCP) (math)'
+          definition: 'hexagonal close-packed (HCP) (math.)'
+        }
+      ],
+      [
+        {
+          traditional: '壓死駱駝的最後一根稻草',
+          simplified: '压死骆驼的最后一根稻草',
+          pinyin: 'ya1 si3 luo4 tuo5 de5 zui4 hou4 yi1 gen1 dao4 cao3',
+          definition:
+            'the straw that broke the camel’s back (idiom)/the final straw'
         }
       ],
       [
@@ -181,22 +266,6 @@ describe('hanzidictionary', function() {
           simplified: '帕累托最优',
           pinyin: 'Pa4 lei4 tuo1 zui4 you1',
           definition: 'Pareto efficiency (economics)/Pareto optimality'
-        }
-      ],
-      [
-        {
-          traditional: '放射性最強點',
-          simplified: '放射性最强点',
-          pinyin: 'fang4 she4 xing4 zui4 qiang2 dian3',
-          definition: 'radioactive hot spot'
-        }
-      ],
-      [
-        {
-          traditional: '最',
-          simplified: '最',
-          pinyin: 'zui4',
-          definition: 'most/the most/-est (superlative suffix)'
         }
       ],
       [
@@ -221,15 +290,8 @@ describe('hanzidictionary', function() {
           traditional: '最低限度',
           simplified: '最低限度',
           pinyin: 'zui4 di1 xian4 du4',
-          definition: 'minimum'
-        }
-      ],
-      [
-        {
-          traditional: '最低限度理論',
-          simplified: '最低限度理论',
-          pinyin: 'zui4 di1 xian4 du4 li3 lun4',
-          definition: 'minimalist theory'
+          definition:
+            'the bare minimum; the lowest acceptable limit or standard'
         }
       ],
       [
@@ -245,7 +307,7 @@ describe('hanzidictionary', function() {
           traditional: '最低點',
           simplified: '最低点',
           pinyin: 'zui4 di1 dian3',
-          definition: 'lowest point/minimum (point)'
+          definition: 'lowest point; nadir; minimum level'
         }
       ],
       [
@@ -258,18 +320,10 @@ describe('hanzidictionary', function() {
       ],
       [
         {
-          traditional: '最佳利益',
-          simplified: '最佳利益',
-          pinyin: 'zui4 jia1 li4 yi4',
-          definition: 'best interests'
-        }
-      ],
-      [
-        {
           traditional: '最佳化',
           simplified: '最佳化',
           pinyin: 'zui4 jia1 hua4',
-          definition: 'optimization (math.)'
+          definition: '(computing, math.) to optimize'
         }
       ],
       [
@@ -290,6 +344,14 @@ describe('hanzidictionary', function() {
       ],
       [
         {
+          traditional: '最優解',
+          simplified: '最优解',
+          pinyin: 'zui4 you1 jie3',
+          definition: 'optimal solution'
+        }
+      ],
+      [
+        {
           traditional: '最先',
           simplified: '最先',
           pinyin: 'zui4 xian1',
@@ -301,15 +363,8 @@ describe('hanzidictionary', function() {
           traditional: '最初',
           simplified: '最初',
           pinyin: 'zui4 chu1',
-          definition: 'first/primary/initial'
-        }
-      ],
-      [
-        {
-          traditional: '最善',
-          simplified: '最善',
-          pinyin: 'zui4 shan4',
-          definition: 'optimal/the best'
+          definition:
+            'first/primary/initial/original/at first/initially/originally'
         }
       ],
       [
@@ -322,10 +377,27 @@ describe('hanzidictionary', function() {
       ],
       [
         {
+          traditional: '最多',
+          simplified: '最多',
+          pinyin: 'zui4 duo1',
+          definition: 'at most/maximum/greatest (amount)/maximal'
+        }
+      ],
+      [
+        {
+          traditional: '最大似然估計',
+          simplified: '最大似然估计',
+          pinyin: 'zui4 da4 si4 ran2 gu1 ji4',
+          definition: 'maximum-likelihood estimation (statistics)'
+        }
+      ],
+      [
+        {
           traditional: '最大公因子',
           simplified: '最大公因子',
           pinyin: 'zui4 da4 gong1 yin1 zi3',
-          definition: 'highest common factor HCF/greatest common divisor GCD'
+          definition:
+            '(math.) highest common factor (HCF); greatest common divisor (GCD)'
         }
       ],
       [
@@ -333,7 +405,8 @@ describe('hanzidictionary', function() {
           traditional: '最大公約數',
           simplified: '最大公约数',
           pinyin: 'zui4 da4 gong1 yue1 shu4',
-          definition: 'highest common factor HCF/greatest common divisor GCD'
+          definition:
+            '(math.) highest common factor (HCF); greatest common divisor (GCD)'
         }
       ],
       [
@@ -349,7 +422,7 @@ describe('hanzidictionary', function() {
           traditional: '最大速率',
           simplified: '最大速率',
           pinyin: 'zui4 da4 su4 lu:4',
-          definition: 'maximum speed/maximum velocity'
+          definition: 'maximum speed; maximum velocity'
         }
       ],
       [
@@ -357,7 +430,16 @@ describe('hanzidictionary', function() {
           traditional: '最好',
           simplified: '最好',
           pinyin: 'zui4 hao3',
-          definition: 'best/(you) had better (do what we suggest)'
+          definition: 'best/had better ...; it would be best to ...'
+        }
+      ],
+      [
+        {
+          traditional: '最好是',
+          simplified: '最好是',
+          pinyin: 'zui4 hao3 shi4',
+          definition:
+            '(as a complete expression, or followed by 啦[la5]) (coll.) Yeah, right! As if!'
         }
       ],
       [
@@ -365,7 +447,7 @@ describe('hanzidictionary', function() {
           traditional: '最密堆積',
           simplified: '最密堆积',
           pinyin: 'zui4 mi4 dui1 ji1',
-          definition: 'close-packing of spheres (math)'
+          definition: 'close-packing of spheres (math.)'
         }
       ],
       [
@@ -373,7 +455,15 @@ describe('hanzidictionary', function() {
           traditional: '最小二乘',
           simplified: '最小二乘',
           pinyin: 'zui4 xiao3 er4 cheng2',
-          definition: 'least square (estimate)'
+          definition: '(math.) least squares'
+        }
+      ],
+      [
+        {
+          traditional: '最小二乘法',
+          simplified: '最小二乘法',
+          pinyin: 'zui4 xiao3 er4 cheng2 fa3',
+          definition: '(math.) least squares method'
         }
       ],
       [
@@ -405,15 +495,23 @@ describe('hanzidictionary', function() {
           traditional: '最小化',
           simplified: '最小化',
           pinyin: 'zui4 xiao3 hua4',
-          definition: 'minimize (computing)'
+          definition: 'to minimize'
         }
       ],
       [
         {
-          traditional: '最差',
-          simplified: '最差',
-          pinyin: 'zui4 cha1',
-          definition: 'least/worst/the least/the worst'
+          traditional: '最小平方法',
+          simplified: '最小平方法',
+          pinyin: 'zui4 xiao3 ping2 fang1 fa3',
+          definition: 'method of least squares (math.) (Tw)'
+        }
+      ],
+      [
+        {
+          traditional: '最少',
+          simplified: '最少',
+          pinyin: 'zui4 shao3',
+          definition: 'at least/minimum/lowest (amount)/minimal'
         }
       ],
       [
@@ -429,7 +527,7 @@ describe('hanzidictionary', function() {
           traditional: '最後',
           simplified: '最后',
           pinyin: 'zui4 hou4',
-          definition: 'final/last/finally/ultimate'
+          definition: 'final; last; ultimate/finally; in the end'
         }
       ],
       [
@@ -450,14 +548,6 @@ describe('hanzidictionary', function() {
       ],
       [
         {
-          traditional: '最後更新',
-          simplified: '最后更新',
-          pinyin: 'zui4 hou4 geng1 xin1',
-          definition: 'latest update/most recent update'
-        }
-      ],
-      [
-        {
           traditional: '最後期限',
           simplified: '最后期限',
           pinyin: 'zui4 hou4 qi1 xian4',
@@ -468,7 +558,7 @@ describe('hanzidictionary', function() {
         {
           traditional: '最後的晚餐',
           simplified: '最后的晚餐',
-          pinyin: 'zui4 hou4 de5 wan3 can1',
+          pinyin: 'Zui4 hou4 de5 Wan3 can1',
           definition: 'the Last Supper (in the Christian Passion story)'
         }
       ],
@@ -506,6 +596,15 @@ describe('hanzidictionary', function() {
       ],
       [
         {
+          traditional: '最是',
+          simplified: '最是',
+          pinyin: 'zui4 shi4',
+          definition:
+            '(before an adjective, to indicate superlative degree) the most .../(literary) what exemplifies this particular quality to the highest degree is ...'
+        }
+      ],
+      [
+        {
           traditional: '最為',
           simplified: '最为',
           pinyin: 'zui4 wei2',
@@ -514,18 +613,10 @@ describe('hanzidictionary', function() {
       ],
       [
         {
-          traditional: '最牛',
-          simplified: '最牛',
-          pinyin: 'zui4 niu2',
-          definition: 'tough as nails'
-        }
-      ],
-      [
-        {
           traditional: '最終',
           simplified: '最终',
           pinyin: 'zui4 zhong1',
-          definition: 'final/ultimate'
+          definition: 'final; ultimate'
         }
       ],
       [
@@ -541,8 +632,7 @@ describe('hanzidictionary', function() {
           traditional: '最近',
           simplified: '最近',
           pinyin: 'zui4 jin4',
-          definition:
-            'recent/recently/these days/latest/soon/nearest (of locations)/shortest (of routes)'
+          definition: 'recently/soon/nearest'
         }
       ],
       [
@@ -559,6 +649,14 @@ describe('hanzidictionary', function() {
           simplified: '最远',
           pinyin: 'zui4 yuan3',
           definition: 'furthest/most distant/at maximum distance'
+        }
+      ],
+      [
+        {
+          traditional: '最高',
+          simplified: '最高',
+          pinyin: 'zui4 gao1',
+          definition: 'tallest/highest/supreme (court etc)'
         }
       ],
       [
@@ -619,10 +717,10 @@ describe('hanzidictionary', function() {
       ],
       [
         {
-          traditional: '歷來最低點',
-          simplified: '历来最低点',
-          pinyin: 'li4 lai2 zui4 di1 dian3',
-          definition: 'all time low (point)'
+          traditional: '為善最樂',
+          simplified: '为善最乐',
+          pinyin: 'wei2 shan4 zui4 le4',
+          definition: 'doing good deeds brings the greatest joy (idiom)'
         }
       ],
       [
@@ -630,7 +728,8 @@ describe('hanzidictionary', function() {
           traditional: '真聲最高音',
           simplified: '真声最高音',
           pinyin: 'zhen1 sheng1 zui4 gao1 yin1',
-          definition: 'highest true (non-falsetto) voice'
+          definition:
+            '(music) the highest note one can sing in a natural (non-falsetto) voice'
         }
       ],
       [
@@ -670,7 +769,7 @@ describe('hanzidictionary', function() {
           traditional: '面心立方最密堆積',
           simplified: '面心立方最密堆积',
           pinyin: 'mian4 xin1 li4 fang1 zui4 mi4 dui1 ji1',
-          definition: 'face-centered cubic (FCC) (math)'
+          definition: 'face-centered cubic (FCC) (math.)'
         }
       ]
     ];
@@ -692,7 +791,7 @@ describe('hanzidictionary', function() {
           traditional: '爸爸',
           simplified: '爸爸',
           pinyin: 'ba4 ba5',
-          definition: '(informal) father/CL:個|个[ge4],位[wei4]'
+          definition: '(coll.) father; dad/CL:位[wei4]'
         }
       ]
     ];
@@ -711,6 +810,38 @@ describe('hanzidictionary', function() {
       ],
       [
         {
+          traditional: '單親爸爸',
+          simplified: '单亲爸爸',
+          pinyin: 'dan1 qin1 ba4 ba5',
+          definition: 'single father'
+        }
+      ],
+      [
+        {
+          traditional: '奶爸',
+          simplified: '奶爸',
+          pinyin: 'nai3 ba4',
+          definition: 'stay-at-home dad'
+        }
+      ],
+      [
+        {
+          traditional: '寶爸',
+          simplified: '宝爸',
+          pinyin: 'bao3 ba4',
+          definition: 'a dad (father of a young child)'
+        }
+      ],
+      [
+        {
+          traditional: '後爸',
+          simplified: '后爸',
+          pinyin: 'hou4 ba4',
+          definition: '(coll.) stepfather'
+        }
+      ],
+      [
+        {
           traditional: '爸',
           simplified: '爸',
           pinyin: 'ba4',
@@ -719,10 +850,26 @@ describe('hanzidictionary', function() {
       ],
       [
         {
+          traditional: '爸媽',
+          simplified: '爸妈',
+          pinyin: 'ba4 ma1',
+          definition: 'dad and mom'
+        }
+      ],
+      [
+        {
+          traditional: '爸比',
+          simplified: '爸比',
+          pinyin: 'ba3 bi2',
+          definition: '(loanword) daddy'
+        }
+      ],
+      [
+        {
           traditional: '爸爸',
           simplified: '爸爸',
           pinyin: 'ba4 ba5',
-          definition: '(informal) father/CL:個|个[ge4],位[wei4]'
+          definition: '(coll.) father; dad/CL:位[wei4]'
         }
       ],
       [
@@ -730,7 +877,7 @@ describe('hanzidictionary', function() {
           traditional: '老爸',
           simplified: '老爸',
           pinyin: 'lao3 ba4',
-          definition: 'father/dad'
+          definition: 'father; dad'
         }
       ],
       [
@@ -748,6 +895,12 @@ describe('hanzidictionary', function() {
           pinyin: 'A1 ba4',
           definition:
             'Abba (Aramaic word father)/by ext. God the Father in Christian gospel'
+        },
+        {
+          traditional: '阿爸',
+          simplified: '阿爸',
+          pinyin: 'a1 ba4',
+          definition: '(dialect) father'
         }
       ],
       [
