@@ -762,4 +762,48 @@ describe('hanzidictionary', function() {
     ];
     assert.deepEqual(hanzi.dictionarySearch('爸'), expected);
   });
+
+  function collectSearchWords(character) {
+    var words = {};
+    hanzi.dictionarySearch(character).forEach(function(entries) {
+      entries.forEach(function(entry) {
+        words[entry.traditional] = true;
+      });
+    });
+    return Object.keys(words);
+  }
+
+  function assertSearchIncludes(character, expectedwords) {
+    var words = collectSearchWords(character);
+    expectedwords.forEach(function(word) {
+      assert.ok(
+        words.indexOf(word) != -1,
+        'expected search for ' + character + ' to include ' + word
+      );
+    });
+  }
+
+  it('should find traditional-index words for a dual-script character', function() {
+    // 於 exists as a simplified headword (the wu1 sense), which used to
+    // suppress the traditional scan entirely.
+    assertSearchIncludes('於', ['於是', '由於', '終於', '等於', '屬於']);
+    assertSearchIncludes('乾', ['乾淨', '餅乾', '乾杯', '乾坤']);
+    assertSearchIncludes('著', ['著急', '穿著', '著名']);
+    assertSearchIncludes('徵', ['特徵', '象徵', '徵求']);
+    assertSearchIncludes('藉', ['藉口', '慰藉']);
+    assertSearchIncludes('嚥', ['嚥氣']);
+  });
+
+  it('should not return duplicate entries for words present in both indexes', function() {
+    var counts = {};
+    hanzi.dictionarySearch('爸').forEach(function(entries) {
+      entries.forEach(function(entry) {
+        var key = entry.traditional + entry.pinyin + entry.definition;
+        counts[key] = (counts[key] || 0) + 1;
+      });
+    });
+    for (var key in counts) {
+      assert.equal(counts[key], 1, 'duplicate entry for ' + key);
+    }
+  });
 });

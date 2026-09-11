@@ -88,6 +88,53 @@ describe('hanzidecomposer', function() {
     });
   });
 
+  it('gets character frequency data for a dual-script character via its traditional reading', function() {
+    // 於 is its own (unranked) simplified headword for the wu1 sense, but as
+    // the traditional form of 于 it must resolve to 于's rank.
+    var frequency = hanzi.getCharacterFrequency('於');
+    assert.equal(frequency.number, '40');
+    assert.equal(frequency.character, '于');
+
+    frequency = hanzi.getCharacterFrequency('著');
+    assert.equal(frequency.number, '41');
+    assert.equal(frequency.character, '着');
+
+    frequency = hanzi.getCharacterFrequency('徵');
+    assert.equal(frequency.number, '738');
+    assert.equal(frequency.character, '征');
+
+    frequency = hanzi.getCharacterFrequency('藉');
+    assert.equal(frequency.number, '982');
+    assert.equal(frequency.character, '借');
+
+    frequency = hanzi.getCharacterFrequency('瞭');
+    assert.equal(frequency.number, '5');
+    assert.equal(frequency.character, '了');
+  });
+
+  it('does not find frequency data for a dual-script character whose forms are all unranked', function() {
+    // 嚥 only maps to itself in CC-CEDICT and is unranked in the list.
+    assert.deepEqual(hanzi.getCharacterFrequency('嚥'), 'Character not found');
+  });
+
+  it('keeps frequency results unchanged for regular characters', function() {
+    assert.equal(hanzi.getCharacterFrequency('的').number, '1');
+    assert.equal(hanzi.getCharacterFrequency('干').number, '353');
+    assert.equal(hanzi.getCharacterFrequency('发').number, '47');
+
+    var frequency = hanzi.getCharacterFrequency('學');
+    assert.equal(frequency.number, '66');
+    assert.equal(frequency.character, '学');
+
+    frequency = hanzi.getCharacterFrequency('裡');
+    assert.equal(frequency.number, '50');
+    assert.equal(frequency.character, '里');
+
+    frequency = hanzi.getCharacterFrequency('裏');
+    assert.equal(frequency.number, '50');
+    assert.equal(frequency.character, '里');
+  });
+
   it('gets character by position in frequency list', function() {
     assert.deepEqual(hanzi.getCharacterInFrequencyListByPosition(111), {
       number: '111',
