@@ -184,8 +184,10 @@ Returns a dictionary entry object. Script type is optional.
 
 Script type parameters:
 
-*   's' - Simplified
-*   't' - Traditional
+*   's' - Simplified: entries where the character/word is the simplified headword
+*   't' - Traditional: entries where the character/word is the traditional headword
+
+With no script type, entries from both scripts are returned: the simplified headword entries first, then any traditional headword entries not already listed. A dual-script character such as 乾 or 於 has different senses under each script, so this returns all of them.
 
 ```javascript
 console.log(hanzi.definitionLookup('雪'));

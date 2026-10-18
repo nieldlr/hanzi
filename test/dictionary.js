@@ -135,6 +135,56 @@ describe('hanzidictionary', function() {
     assert.deepEqual(hanzi.definitionLookup('糺'), expected);
   });
 
+  it('should keep each traditional lookup to its own entries', function() {
+    assert.deepEqual(hanzi.definitionLookup('裏', 't'), [
+      {
+        traditional: '裏',
+        simplified: '里',
+        pinyin: 'li3',
+        definition: 'variant of 裡|里[li3]'
+      }
+    ]);
+    // 髮 (hair) is its own character, not a sense of 發.
+    var fa = hanzi.definitionLookup('發', 't');
+    assert.ok(fa.length > 0);
+    fa.forEach(function(e) {
+      assert.equal(e.traditional, '發');
+    });
+  });
+
+  it('should keep each simplified lookup to its own entries', function() {
+    hanzi.definitionLookup('糺', 's').forEach(function(e) {
+      assert.equal(e.simplified, '糺');
+    });
+    // The simplified index still collects every traditional form.
+    var li = hanzi.definitionLookup('里', 's').map(function(e) {
+      return e.traditional;
+    });
+    ['裏', '裡', '里'].forEach(function(g) {
+      assert.ok(li.indexOf(g) > -1, g);
+    });
+  });
+
+  it('should merge both scripts when no script is given', function() {
+    var qian = hanzi.definitionLookup('乾');
+    assert.equal(qian[0].simplified, '乾'); // simplified index first
+    assert.ok(
+      qian.some(function(e) {
+        return e.simplified === '干' && e.pinyin === 'gan1';
+      })
+    );
+    var keys = hanzi.definitionLookup('我').map(function(e) {
+      return e.traditional + e.simplified + e.pinyin + e.definition;
+    });
+    assert.equal(keys.length, new Set(keys).size); // no duplicates
+  });
+
+  it('should read pinyin from both scripts and only from the character itself', function() {
+    assert.ok(hanzi.getPinyin('乾').indexOf('gan1') > -1);
+    assert.ok(hanzi.getPinyin('氾').indexOf('fan4') > -1);
+    assert.deepEqual(hanzi.getPinyin('丬'), ['qiang2']); // pan2 belonged to 爿
+  });
+
   it('should look up a definition of 参 for a traditional variant 參 that has multiple simplified variants', function() {
     var expected = [
       {
