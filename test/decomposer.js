@@ -40,7 +40,7 @@ describe('hanzidecomposer', function() {
       number: '606',
       character: '热',
       count: '67051',
-      percentage: '79.8453694124',
+      percentage: '79.8625004917',
       pinyin: 're4',
       meaning: 'heat/to heat up/fervent/hot (of weather)/warm up'
     });
@@ -49,7 +49,7 @@ describe('hanzidecomposer', function() {
       number: '82',
       character: '好',
       count: '411866',
-      percentage: '38.1712637099',
+      percentage: '38.1794534765',
       pinyin: 'hao3/hao4',
       meaning: 'good/well, be fond of'
     });
@@ -60,7 +60,7 @@ describe('hanzidecomposer', function() {
       number: '606',
       character: '热',
       count: '67051',
-      percentage: '79.8453694124',
+      percentage: '79.8625004917',
       pinyin: 're4',
       meaning: 'heat/to heat up/fervent/hot (of weather)/warm up'
     });
@@ -71,7 +71,7 @@ describe('hanzidecomposer', function() {
       number: '213',
       character: '认',
       count: '191866',
-      percentage: '57.0890429779',
+      percentage: '57.1012916146',
       pinyin: 'ren4',
       meaning: 'to recognize/to know/to admit'
     });
@@ -82,34 +82,40 @@ describe('hanzidecomposer', function() {
       number: '213',
       character: '认',
       count: '191866',
-      percentage: '57.0890429779',
+      percentage: '57.1012916146',
       pinyin: 'ren4',
       meaning: 'to recognize/to know/to admit'
     });
   });
 
-  it('gets character frequency data for a dual-script character via its traditional reading', function() {
-    // 於 is its own (unranked) simplified headword for the wu1 sense, but as
-    // the traditional form of 于 it must resolve to 于's rank.
-    var frequency = hanzi.getCharacterFrequency('於');
-    assert.equal(frequency.number, '40');
-    assert.equal(frequency.character, '于');
+  it('ranks standard simplified characters that are also traditional forms under their own form', function() {
+    // These are in the PRC standard list in their own right (著名, 瞭望), so
+    // they keep their own rank rather than resolving to 着, 了 and so on.
+    var frequency = hanzi.getCharacterFrequency('甚');
+    assert.equal(frequency.number, '626');
+    assert.equal(frequency.character, '甚');
 
     frequency = hanzi.getCharacterFrequency('著');
-    assert.equal(frequency.number, '41');
-    assert.equal(frequency.character, '着');
+    assert.equal(frequency.number, '777');
+    assert.equal(frequency.character, '著');
 
-    frequency = hanzi.getCharacterFrequency('徵');
-    assert.equal(frequency.number, '738');
-    assert.equal(frequency.character, '征');
-
-    frequency = hanzi.getCharacterFrequency('藉');
-    assert.equal(frequency.number, '982');
-    assert.equal(frequency.character, '借');
+    frequency = hanzi.getCharacterFrequency('於');
+    assert.equal(frequency.number, '2025');
+    assert.equal(frequency.character, '於');
 
     frequency = hanzi.getCharacterFrequency('瞭');
-    assert.equal(frequency.number, '5');
-    assert.equal(frequency.character, '了');
+    assert.equal(frequency.number, '4335');
+    assert.equal(frequency.character, '瞭');
+  });
+
+  it('resolves characters outside the standard list to their simplified form', function() {
+    // 鎗 is a variant of 枪 that Junda counts separately.
+    var frequency = hanzi.getCharacterFrequency('鎗');
+    assert.equal(frequency.number, '874');
+    assert.equal(frequency.character, '枪');
+
+    // 貙 has no simplified form in the standard list.
+    assert.deepEqual(hanzi.getCharacterFrequency('貙'), 'Character not found');
   });
 
   it('does not find frequency data for a dual-script character whose forms are all unranked', function() {
@@ -140,20 +146,23 @@ describe('hanzidecomposer', function() {
       number: '111',
       character: '机',
       count: '339823',
-      percentage: '43.7756134862',
+      percentage: '43.785005684',
       pinyin: 'ji1',
       meaning: 'machine/opportunity/secret'
     });
   });
 
-  it("gets a traditional character by position in frequency list that doesn't have a simplified variant", function() {
-    assert.deepEqual(hanzi.getCharacterInFrequencyListByPosition(6649), {
-      number: '6649',
-      character: '貙',
-      count: '13',
-      percentage: '99.9947045027',
-      pinyin: 'chu1',
-      meaning: ''
+  it('gets a character missing from Junda by position in frequency list', function() {
+    // 呣 is ranked from SUBTLEX-CH and Leiden, after Junda's characters, with
+    // an estimated count and CC-CEDICT's pinyin and meaning.
+    assert.deepEqual(hanzi.getCharacterInFrequencyListByPosition(6963), {
+      number: '6963',
+      character: '呣',
+      count: '255',
+      percentage: '99.9988974608',
+      pinyin: 'm2/m4',
+      meaning:
+        'interjection expressing a question, interjection expressing consent/um'
     });
   });
 
