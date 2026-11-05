@@ -42,3 +42,4 @@ v4.0.0 - Added SUBTLEX-CH word frequency data, marged with Leiden Weibo corpus &
 v4.0.1 - Update decomposition for 亶, 𢀖 & 免
 v4.1.0 - Update character frequency with new sources & official lists
 v4.1.1 - Decomposition fix for 𪞐, this was wrong. Also multiplane characters were split wrongly so weren't pulling through.
+v4.1.2 - Speed up dictionarySearch
