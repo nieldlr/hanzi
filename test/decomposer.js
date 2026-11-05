@@ -642,4 +642,16 @@ describe('decomposeMany', () => {
       }
     });
   });
+
+  it('keeps a supplementary-plane character whole', () => {
+    // 𢛳 (U+226F3) is two UTF-16 units; it must not split into lone surrogates.
+    const result = hanzi.decomposeMany('德𢛳');
+    assert.deepEqual(Object.keys(result), ['德', '𢛳']);
+    assert.deepEqual(result['𢛳'], hanzi.decompose('𢛳'));
+    assert.deepEqual(result['德'].components1, ['彳', '𢛳']);
+  });
+
+  it('decomposes a repeated supplementary-plane character once', () => {
+    assert.deepEqual(Object.keys(hanzi.decomposeMany('𢛳 𢛳')), ['𢛳']);
+  });
 });
