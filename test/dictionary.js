@@ -1009,4 +1009,55 @@ describe('hanzidictionary', function() {
       assert.equal(counts[key], 1, 'duplicate entry for ' + key);
     }
   });
+
+  function containsChar(entries, character) {
+    return entries.some(function(entry) {
+      return (
+        Array.from(entry.simplified).indexOf(character) != -1 ||
+        Array.from(entry.traditional).indexOf(character) != -1
+      );
+    });
+  }
+
+  it('should match characters outside the BMP as whole characters', function() {
+    // 𠮶 (U+20BB6) is the simplified form of 嗰. A search used to match by
+    // surrogate halves, returning headwords that share either half instead.
+    var results = hanzi.dictionarySearch('𠮶');
+    assert.ok(results.length > 0, 'expected results for 𠮶');
+    results.forEach(function(entries) {
+      assert.ok(
+        containsChar(entries, '𠮶'),
+        entries[0].simplified + ' does not contain 𠮶'
+      );
+    });
+    assertSearchIncludes('𠮶', ['嗰']);
+    // 𪞎 is in no CEDICT headword.
+    assert.deepEqual(hanzi.dictionarySearch('𪞎'), []);
+  });
+
+  it('should return headwords containing any of several characters, in dictionary order', function() {
+    var both = hanzi.dictionarySearch('爸妈');
+    assert.ok(
+      both.some(function(entries) {
+        return containsChar(entries, '妈') && !containsChar(entries, '爸');
+      })
+    );
+    assert.ok(
+      both.some(function(entries) {
+        return containsChar(entries, '爸') && !containsChar(entries, '妈');
+      })
+    );
+    both.forEach(function(entries) {
+      assert.ok(containsChar(entries, '爸') || containsChar(entries, '妈'));
+    });
+    // A headword with both characters is listed once.
+    var heads = both.map(function(entries) {
+      return entries[0].traditional + entries[0].simplified;
+    });
+    assert.equal(heads.length, new Set(heads).size);
+  });
+
+  it('should return nothing for an empty search', function() {
+    assert.deepEqual(hanzi.dictionarySearch(''), []);
+  });
 });
